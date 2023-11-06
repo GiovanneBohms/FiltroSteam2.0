@@ -1,0 +1,19 @@
+body {
+  background-color: aqua;
+  width: 200px;
+}
+h1 {
+  text-align: center;
+}
+span {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+button {
+  /* display: inline-block; */
+  width: 100%;
+}
