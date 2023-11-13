@@ -4,11 +4,20 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 
-const extensions = "https://steamcommunity.com/market/";
-const webstore = "https://twitter.com/";
+const mozilla = "https://developer.mozilla.org/";
+const steamcommunity = "https://steamcommunity.com/";
+const steampowered = "https://store.steampowered.com/";
+const twitter = "https://twitter.com/";
+const github = "https://github.com/";
 
 chrome.action.onClicked.addListener(async (tab) => {
-  if (tab.url.startsWith(extensions) || tab.url.startsWith(webstore)) {
+  if (
+    tab.url.startsWith(steamcommunity) ||
+    tab.url.startsWith(twitter) ||
+    tab.url.startsWith(github) ||
+    tab.url.startsWith(steampowered) ||
+    tab.url.startsWith(mozilla)
+  ) {
     const prevState = await chrome.action.getBadgeText({ tabId: tab.id });
     const nextState = prevState === "ON" ? "OFF" : "ON";
 
@@ -16,15 +25,19 @@ chrome.action.onClicked.addListener(async (tab) => {
       tabId: tab.id,
       text: nextState,
     });
-    const files = ["index.js", "module1.js"];
+
     if (nextState === "ON") {
       await chrome.scripting
         .executeScript({
           target: { tabId: tab.id },
-          files: [files],
+          files: ["./src/APIs.js","./src/db.js", "./src/module1.js","./src/dependencias.js", "./src/index.js"],
         })
         .then(() => console.log("script injected"));
     } else if (nextState === "OFF") {
+      // await chrome.scripting.removeCSS({
+      //   files: ["focus-mode.css"],
+      //   target: { tabId: tab.id },
+      // });
     }
   }
 });

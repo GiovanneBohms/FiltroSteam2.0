@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Filtro Steam 2.0",
-  "description": "Base Level Extension",
+  "name": "Click Injetor",
+  "description": "Virtual Machine Chrome",
   "version": "1.0",
 
   "background": {
