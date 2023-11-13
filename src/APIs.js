@@ -70,7 +70,7 @@ async function dadosPrimarioss(fim) {
       `https://steamcommunity.com/market/search/render/?query=&start=${inicio}&count=${fim}&search_descriptions=0&sort_column=popular&sort_dir=desc&norender=1`
     );
     let objetoDados = await promessa.json();
-    return objetoDados
+    return objetoDados;
   } catch (error) {
     console.log("erro de conexão em dadosPrimarios");
     return null;
@@ -83,11 +83,7 @@ async function dadosPrimarios(fim) {
     let promessa = await fetch(
       `https://steamcommunity.com/market/search/render/?query=&start=${inicio}&count=${fim}&search_descriptions=0&sort_column=popular&sort_dir=desc&norender=1`
     );
-
-    // Adiciona logs para depuração
-    
     let objetoDados = await promessa.json();
-    console.log('Dados da API:', objetoDados);
     return objetoDados;
   } catch (error) {
     console.error("Erro de conexão em dadosPrimarios:", error);

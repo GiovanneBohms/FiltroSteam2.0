@@ -13,9 +13,10 @@ const configuracao = {
   precoMaximo: 0.4,
 };
 
+
+
 async function coletaItens(intervalo) {
   let objetos = await dadosPrimarios(intervalo);
-
   if (!objetos) {
     console.log("houve erro em coletaItens");
     return null;
@@ -48,7 +49,6 @@ async function coletaIntervalos() {
   let i = 0;
   while (i < intervalo) {
     let itensDoIntervalo = await coletaItens(i);
-    
     if (!itensDoIntervalo) {
       console.log(`houve null na iteração ${i}`);
       await delay(1000 * 60 * 1);

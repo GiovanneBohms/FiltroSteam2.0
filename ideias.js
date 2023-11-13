@@ -1,5 +1,3 @@
-import { helloByModule } from "./module1";
-
 let configuracao= {
   // Config para coleta de API
   "quantidadeParaPesquisar": 20000,
