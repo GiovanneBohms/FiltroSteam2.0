@@ -1,20 +1,8 @@
 console.log("./src/coletaIntervalos.js");
 
-let item = {
-  precoDeVenda: 0.25,
-  ofertasListadas: 5000,
-  name: "Dreams%20%26%20Nightmares%20Case",
-  id: 730,
-  cotacao: [],
-  idBook: "",
-};
-
 async function coletaItens(intervalo) {
   let objetos = await listaDeItens(intervalo);
-  const html = objetos.results_html;
-  const regex =
-    /steamcommunity\.com\/market\/listings\/(\d+)\/([^"]+)"[\s\S]*?data-qty="([^"]+)"[\s\S]*?data-price="([^"]+)"/g;
-  let matches = html.matchAll(regex);
+  let matches = regexIdNamePriceQuant(objetos.results_html)
   let itens = [];
 
   for (const match of matches) {
@@ -33,13 +21,10 @@ async function coletaItens(intervalo) {
   return itens;
 }
 
-// coletaItens(100);
-
 async function coletaIntervalos() {
   let intervalo = configuracao.quantidadeParaPesquisar;
-  console.log(intervalo);
   let todosOsItens = [];
-  let i = 0;
+  let i = 100;
   while (i <= intervalo) {
     let itensDoIntervalo = await coletaItens(i);
     if (!itensDoIntervalo) {
@@ -49,9 +34,7 @@ async function coletaIntervalos() {
     }
     todosOsItens = todosOsItens.concat(itensDoIntervalo);
     console.log(todosOsItens);
-    console.log(i);
     i = i + 100;
   }
-  console.log(todosOsItens[101]);
 }
 coletaIntervalos();
