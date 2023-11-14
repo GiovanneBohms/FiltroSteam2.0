@@ -11,6 +11,15 @@ const configuracao = {
   precoMaximo: 0.4,
 };
 
+class Item{
+  constructor(precoDeVenda, ofertasListadas, name, id){
+    this.name = name;
+    this.id = Number(id);
+    this.precoDeVenda = parseFloat((((Number(precoDeVenda))/100)*configuracao.cotacaoDolar).toFixed(2));
+    this.ofertasListadas = Number(ofertasListadas);
+  }
+}
+
 let item = {
   precoDeVenda: 0.25,
   ofertasListadas: 5000,
