@@ -18,19 +18,18 @@ async function coletaItens(intervalo) {
   let itens = [];
 
   for (const match of matches) {
-    if(match[3]>=configuracao.ofertasMinimas){
-    itens.push({
-      id: match[1],
-      name: match[2],
-      quantidade: match[3],
-      preco: match[4],
-    });
-    }else{
+    if (match[3] >= configuracao.ofertasMinimas) {
+      itens.push({
+        id: match[1],
+        name: match[2],
+        quantidade: match[3],
+        preco: (match[4] / 100) * configuracao.cotacaoDolar,
+      });
+    } else {
       continue;
     }
   }
 
-  console.log(itens);
   return itens;
 }
 
@@ -38,10 +37,10 @@ async function coletaItens(intervalo) {
 
 async function coletaIntervalos() {
   let intervalo = configuracao.quantidadeParaPesquisar;
-  console.log(intervalo)
+  console.log(intervalo);
   let todosOsItens = [];
   let i = 0;
-  while (i < intervalo) {
+  while (i <= intervalo) {
     let itensDoIntervalo = await coletaItens(i);
     if (!itensDoIntervalo) {
       console.log(`houve null na iteração ${i}`);
@@ -55,6 +54,4 @@ async function coletaIntervalos() {
   }
   console.log(todosOsItens[101]);
 }
-coletaIntervalos()
-
-console.log("oi?")
+coletaIntervalos();
