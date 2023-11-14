@@ -14,11 +14,16 @@ const configuracao = {
 let item = {
   precoDeVenda: 0.25,
   ofertasListadas: 5000,
-  name: 'Dreams%20%26%20Nightmares%20Case',
+  name: "Dreams%20%26%20Nightmares%20Case",
   id: 730,
   cotacao: [],
   idBook: "",
 };
 
+// var nameRegex = /\/market\/listings\/\d+\/([^"]+)"/;
+// var idRegex = /\/(\d+)\/([^"]+)"/;
+// var quantidadeRegex = /data-qty="([^"]+)"/;
+// var precoRegex = /data-price="([^"]+)"/;
+
 console.log("oi");
-console.log(configuracao.horas)
+console.log(configuracao.horas);
