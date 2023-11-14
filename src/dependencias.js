@@ -7,10 +7,8 @@ function delay(ms) {
 function regexIdNamePriceQuant(string) {
   const regex =
     /steamcommunity\.com\/market\/listings\/(\d+)\/([^"]+)"[\s\S]*?data-qty="([^"]+)"[\s\S]*?data-price="([^"]+)"/g;
-  let listaStringItens = string.matchAll(regex);
   let listaStringItensArray = [...string.matchAll(regex)];
-  criaItem(listaStringItensArray);
-  return listaStringItens;
+  return listaStringItensArray;
 }
 
 function criaItem(array) {
