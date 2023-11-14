@@ -1,6 +1,6 @@
 const configuracao = {
   // Config para coleta de API
-  quantidadeParaPesquisar: 100,
+  quantidadeParaPesquisar: 200,
   ofertasMinimas: 1000,
   precoPrimario: 10.0,
   cotacaoDolar: 4.91,
