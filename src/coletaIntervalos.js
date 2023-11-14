@@ -1,23 +1,15 @@
 console.log("./src/coletaIntervalos.js");
 
-async function coletaItens(intervalo) {
+async function coletaItensComOfertasMinimas(intervalo) {
   let objetos = await listaDeItens(intervalo);
-  let matches = regexIdNamePriceQuant(objetos.results_html)
+  let matches = regexIdNamePriceQuant(objetos.results_html);
+  let arrayObjetosItens = criaItem(matches);
   let itens = [];
-
-  for (const match of matches) {
-    if (match[3] >= configuracao.ofertasMinimas) {
-      itens.push({
-        id: match[1],
-        name: match[2],
-        quantidade: match[3],
-        preco: (match[4] / 100) * configuracao.cotacaoDolar,
-      });
-    } else {
-      continue;
+  for (let i = 0; i < arrayObjetosItens.length; i++) {
+    if (arrayObjetosItens[i].ofertasListadas >= configuracao.ofertasMinimas) {
+      itens.push(arrayObjetosItens[i]);
     }
   }
-
   return itens;
 }
 
@@ -26,15 +18,16 @@ async function coletaIntervalos() {
   let todosOsItens = [];
   let i = 100;
   while (i <= intervalo) {
-    let itensDoIntervalo = await coletaItens(i);
+    let itensDoIntervalo = await coletaItensComOfertasMinimas(i);
     if (!itensDoIntervalo) {
       console.log(`houve null na iteração ${i}`);
       await delay(1000 * 60 * 1);
       continue;
     }
     todosOsItens = todosOsItens.concat(itensDoIntervalo);
-    console.log(todosOsItens);
+    
     i = i + 100;
+    console.log("Quanntidade de itens filtrados com ofertas mínias",todosOsItens.length, "de um total de",i-100);
   }
 }
 coletaIntervalos();
