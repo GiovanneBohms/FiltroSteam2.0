@@ -29,8 +29,8 @@ async function coletaDadosItens(id, name) {
   }
 }
 
-// Coleta id especial para acessar api do book e dados para construir gráfico de volatilidade
-async function coletaIdParaBookEGraficoDeVolatididade(id, name) {
+// Coleta cotacoes e idBook
+async function coletaCotacoesEIdBook(id, name) {
   const url = `https://steamcommunity.com/market/listings/${id}/${name}`;
   const headers = {
     "Accept-Encoding": "gzip, deflate, br",
@@ -55,6 +55,9 @@ async function coletaIdParaBookEGraficoDeVolatididade(id, name) {
 
   try {
     let promessa = await fetch(url, requestOptions);
+    if (!promessa.ok) {
+      return null
+    }
     let stringVolatilidade = await promessa.text();
     return stringVolatilidade;
   } catch (error) {
@@ -63,19 +66,7 @@ async function coletaIdParaBookEGraficoDeVolatididade(id, name) {
   }
 }
 
-async function dadosPrimarioss(fim) {
-  let inicio = fim - 100;
-  try {
-    let promessa = await fetch(
-      `https://steamcommunity.com/market/search/render/?query=&start=${inicio}&count=${fim}&search_descriptions=0&sort_column=popular&sort_dir=desc&norender=1`
-    );
-    let objetoDados = await promessa.json();
-    return objetoDados;
-  } catch (error) {
-    console.log("erro de conexão em dadosPrimarios");
-    return null;
-  }
-}
+
 
 async function dadosPrimarios(fim) {
   let inicio = fim - 100;
