@@ -1,6 +1,6 @@
 const configuracao = {
   // Config para coleta de API
-  quantidadeParaPesquisar: 10000,
+  quantidadeParaPesquisar: 100,
   ofertasMinimas: 5000,
   precoPrimario: 10.0,
   cotacaoDolar: 4.91,
@@ -8,24 +8,29 @@ const configuracao = {
   horas: 336,
   volume: 10000,
   precoMinimo: 0.16,
-  precoMaximo: 0.90,
+  precoMaximo: 2.00,
   id: !753 //cartas que levam 1 semana para poder revender
 };
 
 class Item{
-  constructor(precoDeVenda, ofertasListadas, name, id){
+  id
+  name
+  ofertasQuant
+  precoDeVenda
+  cotacoes
+  idBook
+  
+  constructor(precoDeVenda, ofertasQuant, name, id){
     this.name = name;
     this.id = Number(id);
     this.precoDeVenda = parseFloat((((Number(precoDeVenda))/100)*configuracao.cotacaoDolar).toFixed(2));
-    this.ofertasListadas = Number(ofertasListadas);
+    this.ofertasQuant = Number(ofertasQuant);
+  }
+  setCotacoes(cotacoes){
+    this.cotacoes = cotacoes;
+  }
+  setIdBook(idBook){
+    this.idBook = idBook;
   }
 }
 
-let item = {
-  precoDeVenda: 0.25,
-  ofertasListadas: 5000,
-  name: "Dreams%20%26%20Nightmares%20Case",
-  id: 730,
-  cotacao: [],
-  idBook: "",
-};
