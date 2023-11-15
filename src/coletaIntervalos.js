@@ -2,6 +2,9 @@ console.log("./src/coletaIntervalos.js");
 
 async function coletaItensComConfig(intervalo) {
   const objetos = await listaDeItens(intervalo);
+  if(!objetos){
+    return null
+  }
   const matches = regexIdNamePriceQuant(objetos.results_html);
   const arrayObjetosItens = criaItem(matches);
   let itens = [];
@@ -23,15 +26,18 @@ async function coletaIntervalos() {
   let i = 100;
   while (i <= intervalo) {
     const itensDoIntervalo = await coletaItensComConfig(i);
+
     if (!itensDoIntervalo) {
-      console.log(`houve null na iteração ${i}`);
+      console.log(`houve null na iteração ${i} Delay de 1 minutos foi aplicado`);
       await delay(1000 * 60 * 1);
       continue;
     }
     todosOsItens = todosOsItens.concat(itensDoIntervalo);
     
     i = i + 100;
-    console.log('de',i-100,'',todosOsItens.length, 'itens foram filtrados')
+    let porcentagem = parseFloat((((todosOsItens.length)/(i-100))*100).toFixed(2))
+    console.log('de',i-100,'itens',todosOsItens.length, 'foram filtrados em uma relação de',porcentagem,"%")
+    await delay(12000)
   }
     console.log(todosOsItens[0])
     console.log(todosOsItens)
