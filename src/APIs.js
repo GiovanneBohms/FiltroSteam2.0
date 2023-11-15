@@ -16,10 +16,10 @@ async function listaDeItens(fim) {
 }
 
 // Coleta volume, preço médio e último valor ofertado utilizando Name e Id
-async function coletaDadosItens(Id, Name) {
+async function coletaDadosItens(id, name) {
   try {
     let promessa = await fetch(
-      `https://steamcommunity.com/market/priceoverview/?country=BR&currency=7&appid=${Id}&market_hash_name=${Name}`
+      `https://steamcommunity.com/market/priceoverview/?country=BR&currency=7&appid=${id}&market_hash_name=${name}`
     );
     let objetoDados = await promessa.json();
     return objetoDados;
