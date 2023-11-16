@@ -49,7 +49,7 @@ function telaAtualizações(string){
   const printConfig = document.getElementById("printConfiguracao")
 
   
-  let printConfiguracao=`Configuração definida:<br><br> Total a Pesquisar:${configuracao.quantidadeParaPesquisar}<br> Ofertas Minimas:${configuracao.ofertasMinimas}<br> Intervalo em Horas: ${configuracao.horas}<br> Volume Médio por Hora: ${configuracao.volumeMedioHora}<br> Preço Mínimo: ${configuracao.precoMinimo}<br> Preço Mínimo: ${configuracao.precoMaximo}`
+  let printConfiguracao=`<span style="font-weight: bold;">Configuração definida:</span><br><br> Total a Pesquisar:${configuracao.quantidadeParaPesquisar}<br> Ofertas Minimas:${configuracao.ofertasMinimas}<br> Intervalo em Horas: ${configuracao.horas}<br> Volume Médio por Hora: ${configuracao.volumeMedioHora}<br> Preço Mínimo: ${configuracao.precoMinimo}<br> Preço Mínimo: ${configuracao.precoMaximo}`
 
   let print=`<div style="max-width: 620px;">
   <p style="word-wrap: break-word;">${string}</p>
@@ -60,6 +60,7 @@ function telaAtualizações(string){
   printAtualizacoes.innerHTML = print
 }
 function capturarDados() {
+  botaoFiltro.removeEventListener('click', capturarDados);
   let quantidadeItens = parseInt(quantItens.value);
   let ofertasMinimas = parseInt(valorMinimo.value)
   let intervaloHora = parseInt(intervaloDeHoras.value)
@@ -70,6 +71,4 @@ function capturarDados() {
   config(quantidadeItens,ofertasMinimas,intervaloHora,volumeMedio,cotacaoMinima,cotacaoMaxima)
   converteStringEmCotacaoEIDBook();
 }
-
-
 botaoFiltro.addEventListener('click', capturarDados)
