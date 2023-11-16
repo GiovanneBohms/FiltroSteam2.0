@@ -30,7 +30,6 @@ async function converteStringEmCotacaoEIDBook() {
   let itens = await coletaIntervalos();
   let itensFiltradosCotacao=[]
   let i = 0;
-
   while (i < itens.length) {
     let stringCotacoesEIdBook = await coletaCotacoesEIdBook(
       itens[i].id,
@@ -48,17 +47,13 @@ async function converteStringEmCotacaoEIDBook() {
     itens[i].setIdBook(idBook);
     itens[i].setLink();
     let arraySegundoFiltro = filtraVolumeCotacoes(itens[i].cotacoes)
-    if(arraySegundoFiltro[0]){
 
+    if(arraySegundoFiltro[0]){
       itens[i].setVolumeMedioPorHora(arraySegundoFiltro[1])
       console.log("Volume Médio de:",parseInt(itens[i].volumeMedioPorHora),itens[i])
       itensFiltradosCotacao.push(itens[i])
-    }else{
-      i++
-      console.log("segundo filtro de",itens.length,"itens",i,"foram verificados e",itensFiltradosCotacao.length,"passaram no teste")
-      continue;
     }
-    console.log("segundo filtro de",itens.length,"itens",i,"foram verificados e",itensFiltradosCotacao.length,"passaram no teste")
+    console.log("segundo filtro de",itens.length,"itens",i+1,"foram verificados e",itensFiltradosCotacao.length,"passaram no teste")
     i++;
   }
   
