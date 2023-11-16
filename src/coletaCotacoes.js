@@ -1,4 +1,13 @@
 console.log("./src/coletaCotacoes.js");
+function filtraVolumeCotacoes(arrayCotacoes){
+  let volumeTotal = 0
+  for(let i =0; i<arrayCotacoes.length; i++){
+    volumeTotal += arrayCotacoes[i][2]
+  }
+  if(volumeTotal/arrayCotacoes.length >= configuracao.volumeMedioHora){
+    return [true, volumeTotal/arrayCotacoes.length]
+  }
+}
 
 function converteStringEmCotacoes(stringCotacoesEIdBook) {
   const horas = configuracao.horas;
@@ -17,6 +26,7 @@ function converteStringEmCotacoes(stringCotacoesEIdBook) {
 
 async function converteStringEmCotacaoEIDBook() {
   let itens = await coletaIntervalos();
+  let itensFiltradosCotacao=[]
   let i = 0;
 
   while (i < itens.length) {
@@ -31,15 +41,28 @@ async function converteStringEmCotacaoEIDBook() {
     }
     let cotacoes = converteStringEmCotacoes(stringCotacoesEIdBook);
     let idBook = regexIdBook(stringCotacoesEIdBook);
+    // refatorar a partir daqui
     itens[i].setCotacoes(cotacoes);
     itens[i].setIdBook(idBook);
     itens[i].setLink();
-
-    console.log(i + 1, "de", itens.length, itens[i]);
+    let arraySegundoFiltro = filtraVolumeCotacoes(itens[i].cotacoes)
+    if(arraySegundoFiltro[0]){
+      itens[i].setVolumeMedioPorHora(arraySegundoFiltro[1])
+      console.log("Volume Médio de:",parseInt(itens[i].setVolumeMedioPorHora),itens[i])
+      itensFiltradosCotacao.push(itens[i])
+    }
+    console.log("segundo filtro de",itens.length,"itens",itensFiltradosCotacao.length,"foram filtrados")
     i++;
   }
-
-  abrirLinks(itens)
+  
+  if(itensFiltradosCotacao.length >0){
+    console.log("Em 20 segundos as abas serão abertas")
+    await delay(1000*20)
+    abrirLinks(itensFiltradosCotacao)
+  }else{
+    console.log("Nenhum item encontrado")
+  }
+  
 }
 
 function abrirLinks(itens) {
