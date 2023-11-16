@@ -1,17 +1,29 @@
-const configuracao = {
+console.log("./src/config.js")
+let configuracao = {
   // Config para coleta de API
-  quantidadeParaPesquisar: 10000,
+  quantidadeParaPesquisar: 200,
   ofertasMinimas: 5000,
-  cotacaoDolar: 4.91,
-  //Config após coleta de API
-  horas: 336,
-  //VolumeMedioHora de 700 já é considerado alto
-  volumeMedioHora: 400,
-  precoMinimo: 0.16,
-  precoMaximo: 0.50,
+  cotacaoDolar: 1,
+  horas: 168,
+  volumeMedioHora: 200,
+  precoMinimo: 0.04,
+  precoMaximo: 0.30,
   // CSGO:730 DOTA: 570 TF2: 440
   idsPermitidos: [730,570,440] 
 };
+
+function config(quantPesquisa,ofMinimas,horasTotais,volumeMedioPorHora,valorMinimo,valorMaximo){
+
+    configuracao.quantidadeParaPesquisar = quantPesquisa,
+    configuracao.ofertasMinimas = ofMinimas,
+    configuracao.cotacaoDolar = 1
+    configuracao.horas = horasTotais
+    configuracao.volumeMedioHora = volumeMedioPorHora
+    configuracao.precoMinimo = valorMinimo,
+    configuracao.precoMaximo = valorMaximo,
+    // CSGO:730 DOTA: 570 TF2: 440
+    idsPermitidos= [730,570,440] 
+  };
 
 class Item{
   id
@@ -35,7 +47,7 @@ class Item{
     this.idBook = idBook;
   }
   setVolumeMedioPorHora(volumeMedioPorHora){
-    this.setVolumeMedioPorHora = volumeMedioPorHora
+    this.volumeMedioPorHora = volumeMedioPorHora
   }
   setLink(){
     this.link = `https://steamcommunity.com/market/listings/${this.id}/${this.name}`
