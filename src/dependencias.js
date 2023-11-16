@@ -19,3 +19,24 @@ function criaItem(array) {
   }
   return itens;
 }
+
+function regexCotacao(string) {
+  const regex = /\[("[^"]+"),(\d+\.\d+),"(\d+)"\]/g;
+  if (string == null) {
+    return null;
+  }
+  const matches = string.match(regex);
+  return matches;
+}
+
+function regexIdBook(string) {
+  const regex = /Market_LoadOrderSpread\(\s*(\d+)\s*\)/;
+  if (string == null) {
+    return null;
+  }
+  const match = string.match(regex);
+  if (match) {
+    const idBook = match[1];
+    return idBook;
+  }
+}
