@@ -6,6 +6,8 @@ function filtraVolumeCotacoes(arrayCotacoes){
   }
   if(volumeTotal/arrayCotacoes.length >= configuracao.volumeMedioHora){
     return [true, volumeTotal/arrayCotacoes.length]
+  }else{
+    return [false, volumeTotal/arrayCotacoes.length]
   }
 }
 
@@ -47,11 +49,16 @@ async function converteStringEmCotacaoEIDBook() {
     itens[i].setLink();
     let arraySegundoFiltro = filtraVolumeCotacoes(itens[i].cotacoes)
     if(arraySegundoFiltro[0]){
+
       itens[i].setVolumeMedioPorHora(arraySegundoFiltro[1])
-      console.log("Volume Médio de:",parseInt(itens[i].setVolumeMedioPorHora),itens[i])
+      console.log("Volume Médio de:",parseInt(itens[i].volumeMedioPorHora),itens[i])
       itensFiltradosCotacao.push(itens[i])
+    }else{
+      i++
+      console.log("segundo filtro de",itens.length,"itens",i,"foram verificados e",itensFiltradosCotacao.length,"passaram no teste")
+      continue;
     }
-    console.log("segundo filtro de",itens.length,"itens",itensFiltradosCotacao.length,"foram filtrados")
+    console.log("segundo filtro de",itens.length,"itens",i,"foram verificados e",itensFiltradosCotacao.length,"passaram no teste")
     i++;
   }
   
