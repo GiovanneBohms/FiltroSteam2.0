@@ -75,4 +75,4 @@ function abrirLinks(itens) {
   }
   console.log("fim");
 }
-converteStringEmCotacaoEIDBook();
+// 
