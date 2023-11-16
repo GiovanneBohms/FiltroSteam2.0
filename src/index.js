@@ -9,34 +9,34 @@ async function renderizador(){
     // const quantItens = document.getElementById("quantItens")
     // const padrao = document.getElementById("padrao")
     maisItens.innerHTML = ""
-    telaInput.innerHTML = `<p style="text-align: center;">By: Giovanne Bohms</p><form id="meuFormulario">
-    <div style ="display:block; margin-bottom:10px;">
-    <label for="quantItens">Quantidade de Itens para pesquisar:</label>
-    <input type="number" id="quantItens" name="quantItens">
+    telaInput.innerHTML = `<p style="text-align: center;">By: Giovanne Bohms</p><form id="meuFormulario" style="display: flex; flex-direction: column; max-width: 450px; margin: 0 auto;">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <label for="quantItens">Quantidade de Itens para pesquisar:</label>
+        <input type="number" id="quantItens" name="quantItens">
     </div>
-    <div style ="display:block; margin-bottom:10px;">
-    <label for="valorMinimo">Ofertas Mínimas:</label>
-    <input type="number" id="valorMinimo" name="valorMinimo">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <label for="valorMinimo">Ofertas Mínimas:</label>
+        <input type="number" id="valorMinimo" name="valorMinimo">
     </div>
-    <div style ="display:block; margin-bottom:10px;">
-    <label for="intervaloDeHoras">Intervalo De Horas Do Gráfico:</label>
-    <input type="number" id="intervaloDeHoras" name="intervaloDeHoras">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <label for="intervaloDeHoras">Intervalo De Horas Do Gráfico:</label>
+        <input type="number" id="intervaloDeHoras" name="intervaloDeHoras">
     </div>
-    <div style ="display:block; margin-bottom:10px;">
-    <label for="volumeMedioPorHora">Volume Medio De Negociação Por Hora:</label>
-    <input type="number" id="volumeMedioPorHora" name="volumeMedioPorHora">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <label for="volumeMedioPorHora">Volume Medio De Negociação Por Hora:</label>
+        <input type="number" id="volumeMedioPorHora" name="volumeMedioPorHora">
     </div>
-    <div style ="display:block; margin-bottom:10px;">
-    <label for="precoMinimo">Preco Mínimo:</label>
-    <input type="number" id="precoMinimo" name="precoMinimo">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <label for="precoMinimo">Preco Mínimo:</label>
+        <input type="number" id="precoMinimo" name="precoMinimo">
     </div>
-    <div style ="display:block; margin-bottom:10px;">
-    <label for="precoMaximo">Preco Máximo:</label>
-    <input type="number" id="precoMaximo" name="precoMaximo">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <label for="precoMaximo">Preco Máximo:</label>
+        <input type="number" id="precoMaximo" name="precoMaximo">
     </div>
-    <button type="button" id="botaoFiltro" style="display: block; margin: 0 auto; width: 160px; height: 50px; background-color: #1b2838; color: #8F98A0; cursor: pointer; font-weight: bold;">Filtrar Itens</button>
-
-    </form>`
+    <button type="button" id="botaoFiltro" style="height: 50px; background-color: #1b2838; color: #8F98A0; cursor: pointer; font-weight: bold; margin-top: 10px;">Filtrar Itens</button>
+</form>
+`
 }
 renderizador()
 function capturarDados() {
