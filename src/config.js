@@ -1,15 +1,16 @@
 const configuracao = {
   // Config para coleta de API
-  quantidadeParaPesquisar: 100,
+  quantidadeParaPesquisar: 10000,
   ofertasMinimas: 5000,
-  precoPrimario: 10.0,
   cotacaoDolar: 4.91,
   //Config após coleta de API
   horas: 336,
-  volume: 10000,
+  //VolumeMedioHora de 700 já é considerado alto
+  volumeMedioHora: 400,
   precoMinimo: 0.16,
-  precoMaximo: 2.00,
-  id: !753 //cartas que levam 1 semana para poder revender
+  precoMaximo: 0.50,
+  // CSGO:730 DOTA: 570 TF2: 440
+  idsPermitidos: [730,570,440] 
 };
 
 class Item{
@@ -17,9 +18,10 @@ class Item{
   name
   ofertasQuant
   precoDeVenda
+  volumeMedioPorHora
   cotacoes
   idBook
-  
+  link
   constructor(precoDeVenda, ofertasQuant, name, id){
     this.name = name;
     this.id = Number(id);
@@ -32,5 +34,10 @@ class Item{
   setIdBook(idBook){
     this.idBook = idBook;
   }
+  setVolumeMedioPorHora(volumeMedioPorHora){
+    this.setVolumeMedioPorHora = volumeMedioPorHora
+  }
+  setLink(){
+    this.link = `https://steamcommunity.com/market/listings/${this.id}/${this.name}`
+  }
 }
-
