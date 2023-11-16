@@ -37,6 +37,7 @@ async function converteStringEmCotacaoEIDBook() {
     );
     if (!stringCotacoesEIdBook) {
       console.log("muitas requisições, aguarde 5 minutos");
+      telaAtualizações(`muitas requisições, aguarde 5 minutos`)
       await delay(1000 * 60 * 5);
       continue;
     }
@@ -51,18 +52,23 @@ async function converteStringEmCotacaoEIDBook() {
     if(arraySegundoFiltro[0]){
       itens[i].setVolumeMedioPorHora(arraySegundoFiltro[1])
       console.log("Volume Médio de:",parseInt(itens[i].volumeMedioPorHora),itens[i])
+
+      telaAtualizações(`"Volume Médio de${parseInt(itens[i].volumeMedioPorHora)} ${itens[i]}`)
       itensFiltradosCotacao.push(itens[i])
     }
     console.log("segundo filtro de",itens.length,"itens",i+1,"foram verificados e",itensFiltradosCotacao.length,"passaram no teste")
+    telaAtualizações(`segundo filtro de ${itens.length} itens ${i+1} foram verificados e ${itensFiltradosCotacao.length} passaram no teste`)
     i++;
   }
   
   if(itensFiltradosCotacao.length >0){
     console.log("Em 20 segundos as abas serão abertas")
+    telaAtualizações(`Em 20 segundos as abas serão abertas`)
     await delay(1000*20)
     abrirLinks(itensFiltradosCotacao)
   }else{
     console.log("Nenhum item encontrado")
+    telaAtualizações(`Nenhum item encontrado`)
   }
   
 }

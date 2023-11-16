@@ -30,6 +30,7 @@ async function coletaIntervalos() {
 
     if (!itensDoIntervalo) {
       console.log(`houve null na iteração ${i} Delay de 1 minutos foi aplicado`);
+      telaAtualizações(`houve null na iteração ${i} Delay de 1 minutos foi aplicado`)
       await delay(1000 * 60 * 1);
       continue;
     }
@@ -38,6 +39,8 @@ async function coletaIntervalos() {
     i = i + 100;
     let porcentagem = parseFloat((((todosOsItens.length)/(i-100))*100).toFixed(2))
     console.log('de',i-100,'itens',todosOsItens.length, 'foram filtrados em uma relação de',porcentagem,"%")
+
+    telaAtualizações(`de ${i-100} itens ${todosOsItens.length} foram filtrados em uma relação de ${porcentagem} %`)
     if(configuracao.quantidadeParaPesquisar > 100){
       await delay(12000)
     }
