@@ -49,7 +49,13 @@ function telaAtualizações(string){
   const printConfig = document.getElementById("printConfiguracao")
 
   
-  let printConfiguracao=`<span style="font-weight: bold;">Configuração definida:</span><br><br> Total a Pesquisar:${configuracao.quantidadeParaPesquisar}<br> Ofertas Minimas:${configuracao.ofertasMinimas}<br> Intervalo em Horas: ${configuracao.horas}<br> Volume Médio por Hora: ${configuracao.volumeMedioHora}<br> Preço Mínimo: ${configuracao.precoMinimo}<br> Preço Mínimo: ${configuracao.precoMaximo}`
+  let printConfiguracao=`<span style="font-weight: bold;">Configuração definida:</span><br><br> Total a Pesquisar:  ${configuracao.quantidadeParaPesquisar}<br>
+  Ofertas Minimas:  ${configuracao.ofertasMinimas}<br>
+  Intervalo em Horas:  ${configuracao.horas}<br>
+  Volume Médio por Hora:  ${configuracao.volumeMedioHora}<br>
+  Preço Mínimo:  ${configuracao.precoMinimo}<br>
+  Preço Mínimo:  ${configuracao.precoMaximo}<br><br>
+  <span style="font-weight: 700;">Aguarde a coleta de dados:</span><br>`
 
   let print=`<div style="max-width: 620px;">
   <p style="word-wrap: break-word;">${string}</p>
