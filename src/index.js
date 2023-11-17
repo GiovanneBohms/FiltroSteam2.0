@@ -7,11 +7,10 @@ async function renderizador(){
     const maisItens = document.getElementById("popularItemsMore")
     maisItens.innerHTML = ""
     telaInput.innerHTML = `
-    <p style="text-align: center;">By: Giovanne Bohms</p>
+    
     <div id="printConfiguracao" style="max-width: 620px;"> </div> 
     <div id="printAtualizacoes" style="max-width: 620px;"> 
-    
-    <form id="meuFormulario" style="display: flex; flex-direction: column; max-width: 450px; margin: 0 auto;">
+    <form id="meuFormulario" style="display: flex; flex-direction: column; max-width: 450px; margin: 16px auto 64px auto;">
     <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
         <label for="quantItens">Quantidade de Itens para pesquisar:</label>
         <input type="number" id="quantItens" name="quantItens" value="100">
@@ -21,7 +20,7 @@ async function renderizador(){
         <input type="number" id="valorMinimo" name="valorMinimo" value="5000">
     </div>
     <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-        <label for="intervaloDeHoras">Intervalo De Horas Do Gráfico:</label>
+        <label for="intervaloDeHoras">Intervalo Em Horas no Gráfico:</label>
         <input type="number" id="intervaloDeHoras" name="intervaloDeHoras" value="168">
     </div>
     <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
@@ -36,10 +35,11 @@ async function renderizador(){
         <label for="precoMaximo">Preço Máximo:</label>
         <input type="number" id="precoMaximo" name="precoMaximo" value="0.25">
     </div>
-    <button type="button" id="botaoFiltro" style="height: 50px; background-color: #1b2838; color: #8F98A0; cursor: pointer; font-weight: bold; margin-top: 10px;">Filtrar Itens</button>
+    <button type="button" id="botaoFiltro" style="height: 50px; background-color: #1b2838; color: #ebebeb; cursor: pointer; font-weight: bold; margin-top: 10px;">Filtrar Itens</button>
 </form>
 
     </div>
+    <p style="text-align: center; font-size: 12px; margin-top:40px;">By: Crow</p>
     
 `
 }
@@ -73,7 +73,6 @@ function capturarDados() {
   let volumeMedio = parseInt(volumeMedioPorHora.value)
   let cotacaoMinima = parseFloat(precoMinimo.value)
   let cotacaoMaxima = parseFloat(precoMaximo.value)
-
   config(quantidadeItens,ofertasMinimas,intervaloHora,volumeMedio,cotacaoMinima,cotacaoMaxima)
   converteStringEmCotacaoEIDBook();
 }
