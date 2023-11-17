@@ -3,7 +3,10 @@ console.log("./src/dependencias.js");
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
-
+// var nameRegex = /\/market\/listings\/\d+\/([^"]+)"/;
+// var idRegex = /\/(\d+)\/([^"]+)"/;
+// var quantidadeRegex = /data-qty="([^"]+)"/;
+// var precoRegex = /data-price="([^"]+)"/;
 function regexIdNamePriceQuant(string) {
   const regex =
     /steamcommunity\.com\/market\/listings\/(\d+)\/([^"]+)"[\s\S]*?data-qty="([^"]+)"[\s\S]*?data-price="([^"]+)"/g;
