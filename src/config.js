@@ -9,7 +9,7 @@ let configuracao = {
   precoMinimo: 0.04,
   precoMaximo: 0.30,
   // CSGO:730 DOTA: 570 TF2: 440
-  idsPermitidos: [730,570,440] 
+  idsPermitidos: [730,570,440,753]
 };
 
 function config(quantPesquisa,ofMinimas,horasTotais,volumeMedioPorHora,valorMinimo,valorMaximo){

@@ -61,7 +61,8 @@ async function converteStringEmCotacaoEIDBook() {
     i++;
   }
   if(itensFiltradosCotacao.length >0){
-    abrirLinks(itensFiltradosCotacao)
+    printItensFiltrados(itensFiltradosCotacao)
+    // abrirLinks(itensFiltradosCotacao)
   }else{
     console.log("Nenhum item encontrado")
     telaAtualizações(`Nenhum item encontrado`)
@@ -78,4 +79,4 @@ async function abrirLinks(itens) {
   }
   console.log("fim");
 }
-// 
+

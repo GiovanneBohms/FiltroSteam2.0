@@ -37,7 +37,7 @@ async function renderizador(){
 
   </div>
   <div id="printItensFiltrados"></div>
-  <p style="text-align: center; font-size: 12px; margin-top:40px;">By: Crow</p>
+  <p style="text-align: center; font-size: 12px; margin-top:40px;">By: Giovanne Bohms</p>
   
 `
 }
@@ -85,7 +85,7 @@ function printItensFiltrados(itens){
 
      tabelaFiltrada.innerHTML += `
     <tr>
-     <td style=" text-align: left; padding: 8px;"><a href="${itens[i].link}">${nomeDecodificado}</a></td>
+     <td style=" text-align: left; padding: 8px;"><a href="${itens[i].link}" target="_blank">${nomeDecodificado}</a></td>
      <td style=" text-align: left; padding: 8px;">${preco}</td>
      <td style=" text-align: left; padding: 8px;">${volumeTratado}</td>
    </tr>
