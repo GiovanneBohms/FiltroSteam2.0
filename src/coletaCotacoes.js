@@ -61,12 +61,17 @@ async function converteStringEmCotacaoEIDBook() {
     i++;
   }
   if(itensFiltradosCotacao.length >0){
-    printItensFiltrados(itensFiltradosCotacao)
+    let itensOrdenados = ordenaItens(itensFiltradosCotacao)
+    printItensFiltrados(itensOrdenados)
     // abrirLinks(itensFiltradosCotacao)
   }else{
     console.log("Nenhum item encontrado")
     telaAtualizações(`Nenhum item encontrado`)
   }
+}
+
+function ordenaItens(arrayDesordenado){
+ return arrayDesordenado.sort((a, b) => b.volumeMedioPorHora - a.volumeMedioPorHora);
 }
 
 async function abrirLinks(itens) {
