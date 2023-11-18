@@ -56,7 +56,7 @@ Ofertas Minimas:  ${configuracao.ofertasMinimas}<br>
 Intervalo em Horas:  ${configuracao.horas}<br>
 Volume Médio por Hora:  ${configuracao.volumeMedioHora}<br>
 Preço Mínimo:  ${configuracao.precoMinimo}<br>
-Preço Mínimo:  ${configuracao.precoMaximo}<br><br>
+Preço Máximo:  ${configuracao.precoMaximo}<br><br>
 <span style="font-weight: 700;">Aguarde a coleta de dados:</span><br>`;
 
   let print = `<div style="max-width: 620px;">
