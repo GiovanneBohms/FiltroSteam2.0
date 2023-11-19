@@ -81,3 +81,21 @@ async function dadosPrimarios(fim) {
     return null;
   }
 }
+
+async function coletaOfertaEncomendaDoBook(idBook){
+  try{
+    const url = `https://steamcommunity.com/market/itemordershistogram?country=BR&language=brazilian&currency=7&item_nameid=${idBook}&two_factor=0`
+    const promessa = await fetch(url)
+    const objetoBook = await promessa.json()
+    
+    if(!promessa){
+      return null
+    }
+    return objetoBook
+  } catch(error){
+    console.log(error)
+    return null
+}
+  
+
+}
