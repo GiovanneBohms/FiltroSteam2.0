@@ -74,9 +74,10 @@ function printItensFiltrados(itens) {
     <table id="listaFiltrada" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
         <tr >
           <th style=" text-align: left; padding: 8px;">Nome</th>
-          <th style=" text-align: left; padding: 8px;">Preço de Venda</th>
+          <th style=" text-align: left; padding: 8px;">Preço</th>
           <th style=" text-align: left; padding: 8px;">Volume</th>
           <th style=" text-align: left; padding: 8px;">Oferta Total</th>
+          <th style=" text-align: left; padding: 8px;">O/V</th>
         </tr>
     </div>
   `;
@@ -92,9 +93,10 @@ function printItensFiltrados(itens) {
     tabelaFiltrada.innerHTML += `
     <tr>
      <td style=" text-align: left; padding: 8px;"><a href="${itens[i].link}" target="_blank">${nomeDecodificado}</a></td>
-     <td style=" text-align: left; padding: 8px;">${preco}</td>
+     <td style=" text-align: left; padding: 8px;">R$: ${preco}</td>
      <td style=" text-align: left; padding: 8px;">${volume}</td>
      <td style=" text-align: left; padding: 8px;">${ofertaTotal}</td>
+     <td style=" text-align: left; padding: 8px;">${parseInt(ofertaTotal/volume)}</td>
    </tr>
      `;
   }
@@ -116,5 +118,5 @@ function capturarDados() {
     cotacaoMinima,
     cotacaoMaxima
   );
-  converteStringEmCotacaoEIDBook();
+  coletaCotacoes();
 }
