@@ -32,6 +32,7 @@ class Item{
   precoDeVenda
   volumeMedioPorHora
   cotacoes
+  book
   idBook
   link
   constructor(precoDeVenda, ofertasQuant, name, id){
@@ -51,5 +52,8 @@ class Item{
   }
   setLink(){
     this.link = `https://steamcommunity.com/market/listings/${this.id}/${this.name}`
+  }
+  setBook(book){
+    this.book = book;
   }
 }
