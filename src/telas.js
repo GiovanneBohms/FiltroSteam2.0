@@ -6,7 +6,7 @@ async function renderizador() {
   maisItens.innerHTML = "";
   telaInput.innerHTML = `
   <div id="printConfiguracao" style="max-width: 620px;"> </div> 
-  <div id="printAtualizacoes" style="max-width: 620px;"> 
+  <div id="printAtualizacoes" style="max-width: 620px; "> 
   <form id="meuFormulario" style="display: flex; flex-direction: column; max-width: 450px; margin: 16px auto 64px auto;">
 
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
@@ -19,7 +19,7 @@ async function renderizador() {
   </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="valorMinimo">Ofertas Mínimas:</label>
-      <input type="number" id="valorMinimo" name="valorMinimo" value="5000">
+      <input type="number" id="valorMinimo" name="valorMinimo" value="430000">
   </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="intervaloDeHoras">Intervalo Em Horas no Gráfico:</label>
@@ -31,17 +31,17 @@ async function renderizador() {
   </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="precoMinimo">Preço Mínimo:</label>
-      <input type="number" id="precoMinimo" name="precoMinimo" value="0.04">
+      <input type="number" id="precoMinimo" name="precoMinimo" value="1">
   </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="precoMaximo">Preço Máximo:</label>
-      <input type="number" id="precoMaximo" name="precoMaximo" value="0.25">
+      <input type="number" id="precoMaximo" name="precoMaximo" value="4">
   </div>
   <button type="button" id="botaoFiltro" style="height: 50px; background-color: #1b2838; color: #ebebeb; cursor: pointer; font-weight: bold; margin-top: 10px;">Filtrar Itens</button>
 </form>
 
   </div>
-  <div id="printItensFiltrados"></div>
+  <div id="printItensFiltrados" style="font-size:8px "></div>
   <p style="text-align: center; font-size: 12px; margin-top:40px;">By: Giovanne Bohms</p>
   
 `;
@@ -75,9 +75,18 @@ function printItensFiltrados(itens) {
         <tr >
           <th style=" text-align: left; padding: 8px;">Nome</th>
           <th style=" text-align: left; padding: 8px;">Preço</th>
+          <th style=" text-align: left; padding: 8px;">Preço Alvo</th>
+          <th style=" text-align: left; padding: 8px;">Encomendas Preço Alvo</th>
+
+          <th style=" text-align: left; padding: 8px;">Venda Alvo</th>
+          <th style=" text-align: left; padding: 8px;">Oferta Encomenda Alvo</th>
+
           <th style=" text-align: left; padding: 8px;">Volume</th>
-          <th style=" text-align: left; padding: 8px;">Oferta Total</th>
-          <th style=" text-align: left; padding: 8px;">O/V</th>
+          <th style=" text-align: left; padding: 8px;">N volumes</th>
+          
+          
+          
+          
         </tr>
     </div>
   `;
@@ -88,15 +97,27 @@ function printItensFiltrados(itens) {
     const preco = itens[i].precoDeVenda;
     const volume = parseInt(itens[i].volumeMedioPorHora);
     const ofertaTotal = itens[i].ofertasQuant
+    const precoAlvo = itens[i].precoAlvo
+    const encomendasAlvo = itens[i].encomendasPrecoAlvo
+    const vendaAlvo = itens[i].venderAlvo
+    const ofertaPrecoAlvo = itens[i].ofertasPrecoAlvo
    
 
     tabelaFiltrada.innerHTML += `
     <tr>
      <td style=" text-align: left; padding: 8px;"><a href="${itens[i].link}" target="_blank">${nomeDecodificado}</a></td>
      <td style=" text-align: left; padding: 8px;">R$: ${preco}</td>
+     <th style=" text-align: left; padding: 8px;">${precoAlvo}</th>
+     <th style=" text-align: left; padding: 8px;">${encomendasAlvo}</th>
+
+     <th style=" text-align: left; padding: 8px;">${vendaAlvo}</th>
+     <th style=" text-align: left; padding: 8px;">${ofertaPrecoAlvo}</th>
+
+
      <td style=" text-align: left; padding: 8px;">${volume}</td>
-     <td style=" text-align: left; padding: 8px;">${ofertaTotal}</td>
-     <td style=" text-align: left; padding: 8px;">${parseInt(ofertaTotal/volume)}</td>
+     <td style=" text-align: left; padding: 8px;">${parseInt(encomendasAlvo/volume)}</td>
+     
+     
    </tr>
      `;
   }
@@ -118,5 +139,8 @@ function capturarDados() {
     cotacaoMinima,
     cotacaoMaxima
   );
-  coletaCotacoes();
+  calculaBook()
+  // calculaEncomendas()
+  // coletaBook()
+  // coletaCotacoes();
 }
