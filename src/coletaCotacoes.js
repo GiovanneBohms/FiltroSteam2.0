@@ -26,7 +26,7 @@ function converteStringEmCotacoes(stringCotacoesEIdBook) {
   return cotacoes;
 }
 
-async function converteStringEmCotacaoEIDBook() {
+async function coletaCotacoes() {
   let itens = await coletaIntervalos();
   let itensFiltradosCotacao=[]
   let i = 0;
@@ -43,7 +43,7 @@ async function converteStringEmCotacaoEIDBook() {
     }
     let cotacoes = converteStringEmCotacoes(stringCotacoesEIdBook);
     let idBook = regexIdBook(stringCotacoesEIdBook);
-    // refatorar a partir daqui
+    
     itens[i].setCotacoes(cotacoes);
     itens[i].setIdBook(idBook);
     itens[i].setLink();
@@ -63,12 +63,14 @@ async function converteStringEmCotacaoEIDBook() {
   if(itensFiltradosCotacao.length >0){
     let itensOrdenados = ordenaItens(itensFiltradosCotacao)
     printItensFiltrados(itensOrdenados)
-    // abrirLinks(itensFiltradosCotacao)
+    return itensOrdenados
   }else{
     console.log("Nenhum item encontrado")
     telaAtualizações(`Nenhum item encontrado`)
   }
+
 }
+
 
 function ordenaItens(arrayDesordenado){
  return arrayDesordenado.sort((a, b) => b.volumeMedioPorHora - a.volumeMedioPorHora);
