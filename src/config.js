@@ -33,6 +33,7 @@ class Item{
   precoDeVenda
   precoAlvo
   encomendasPrecoAlvo
+  venderAlvo
   ofertasPrecoAlvo
   volumeMedioPorHora
   cotacoes
@@ -68,5 +69,8 @@ class Item{
   }
   setOfertasPrecoAlvo(ofertasPrecoAlvo){
     this.ofertasPrecoAlvo = ofertasPrecoAlvo
+  }
+  setVenderAlvo(venderAlvo){
+    this.venderAlvo = venderAlvo;
   }
 }
