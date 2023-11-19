@@ -8,6 +8,7 @@ let configuracao = {
   volumeMedioHora: 200,
   precoMinimo: 0.04,
   precoMaximo: 0.30,
+  porcentagemDeReducao:0.35,
   // CSGO:730 DOTA: 570 TF2: 440
   idsPermitidos: [730,570,440,753]
 };
@@ -30,6 +31,9 @@ class Item{
   name
   ofertasQuant
   precoDeVenda
+  precoAlvo
+  encomendasPrecoAlvo
+  ofertasPrecoAlvo
   volumeMedioPorHora
   cotacoes
   book
@@ -55,5 +59,14 @@ class Item{
   }
   setBook(book){
     this.book = book;
+  }
+  setPrecoAlvo(precoAlvo){
+    this.precoAlvo = precoAlvo
+  }
+  setEncomendasPrecoAlvo(encomendasPrecoAlvo){
+    this.encomendasPrecoAlvo = encomendasPrecoAlvo
+  }
+  setOfertasPrecoAlvo(ofertasPrecoAlvo){
+    this.ofertasPrecoAlvo = ofertasPrecoAlvo
   }
 }
