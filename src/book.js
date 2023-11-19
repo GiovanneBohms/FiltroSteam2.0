@@ -53,7 +53,25 @@ async function calculaEncomendas(itens){
         if(alvo >= itens[i].book.encomendas[j][0]){
           itens[i].setPrecoAlvo(itens[i].book.encomendas[j][0])
           itens[i].setEncomendasPrecoAlvo(itens[i].book.encomendas[j][1])
-          console.log(itens[i])
+          break;
+        }
+        j++
+      }
+    i++;
+  }
+}
+
+async function calculaOfertas(itens){
+  let i = 0;
+  let j = 0;
+
+  while (i < itens.length) {
+    let volume = itens[i].volumeMedioPorHora;
+ 
+      while(j < itens[i].book.ofertas.length) {
+        if(volume <= itens[i].book.ofertas[j][1]){
+          itens[i].setVenderAlvo(itens[i].book.ofertas[j][0])
+          itens[i].setOfertasPrecoAlvo(itens[i].book.ofertas[j][1])
           break;
         }
         j++
@@ -65,6 +83,7 @@ async function calculaEncomendas(itens){
 async function calculaBook(){
   let itens = await coletaBook();
   await calculaEncomendas(itens)
+  await calculaOfertas(itens)
 
   printItensFiltrados(itens)
 }
