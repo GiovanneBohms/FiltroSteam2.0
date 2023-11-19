@@ -62,7 +62,7 @@ async function coletaCotacoes() {
   }
   if(itensFiltradosCotacao.length >0){
     let itensOrdenados = ordenaItens(itensFiltradosCotacao)
-    printItensFiltrados(itensOrdenados)
+    // printItensFiltrados(itensOrdenados)
     return itensOrdenados
   }else{
     console.log("Nenhum item encontrado")
