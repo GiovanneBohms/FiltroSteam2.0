@@ -20,7 +20,7 @@ async function coletaBook(){
     }
     itens[i].setBook(ofertasEncomendas)
 
-    telaAtualizações(`De ${itens.length}itens ${i+1} com o book atualizado`)
+    telaAtualizações(`De ${itens.length} itens ${i+1} com o book atualizado`)
     console.log("De",itens.length,"itens",i+1,"com o book atualizado")
     await delay (1000*12)
     i++
