@@ -35,23 +35,25 @@ function subtracaoPorcentagem(preco,porcentagem) {
   let result = 0;
   let y = preco
   let reducao = porcentagem
-  // Calcula a redução percentual
+
   result = y / (1 + reducao);
 
-  return result
+  return parseFloat(result.toFixed(2))
 }
 
-async function calculaEncomendas(itens){
+ function calculaEncomendas(itens){
   let i = 0;
-  let j = 0;
+  
 
   while (i < itens.length) {
     let preco = itens[i].precoDeVenda;
     let alvo = subtracaoPorcentagem(preco, configuracao.porcentagemDeReducao);
- 
-      while(j< itens[i].book.encomendas.length) {
-        if(alvo >= itens[i].book.encomendas[j][0]){
-          itens[i].setPrecoAlvo(itens[i].book.encomendas[j][0])
+    console.log(alvo)
+    itens[i].setPrecoAlvo(alvo)
+    let j = 0;
+      while(j < (itens[i].book.encomendas.length)) {
+        if(alvo > itens[i].book.encomendas[j][0]){
+          
           itens[i].setEncomendasPrecoAlvo(itens[i].book.encomendas[j][1])
           break;
         }
@@ -61,15 +63,15 @@ async function calculaEncomendas(itens){
   }
 }
 
-async function calculaOfertas(itens){
+ function calculaOfertas(itens){
   let i = 0;
-  let j = 0;
+  
 
   while (i < itens.length) {
     let volume = itens[i].volumeMedioPorHora;
- 
+    let j = 0;
       while(j < itens[i].book.ofertas.length) {
-        if(volume <= itens[i].book.ofertas[j][1]){
+        if(volume < itens[i].book.ofertas[j][1]){
           itens[i].setVenderAlvo(itens[i].book.ofertas[j][0])
           itens[i].setOfertasPrecoAlvo(itens[i].book.ofertas[j][1])
           break;
@@ -82,8 +84,8 @@ async function calculaOfertas(itens){
 
 async function calculaBook(){
   let itens = await coletaBook();
-  await calculaEncomendas(itens)
-  await calculaOfertas(itens)
+   calculaEncomendas(itens)
+   calculaOfertas(itens)
 
   printItensFiltrados(itens)
 }
