@@ -31,7 +31,7 @@ class Item{
   name
   ofertasQuant
   precoDeVenda
-  precoAlvo
+  CompraAlvo
   encomendasPrecoAlvo
   venderAlvo
   ofertasPrecoAlvo
@@ -61,8 +61,8 @@ class Item{
   setBook(book){
     this.book = book;
   }
-  setPrecoAlvo(precoAlvo){
-    this.precoAlvo = precoAlvo
+  setCompraAlvo(CompraAlvo){
+    this.CompraAlvo = CompraAlvo
   }
   setEncomendasPrecoAlvo(encomendasPrecoAlvo){
     this.encomendasPrecoAlvo = encomendasPrecoAlvo

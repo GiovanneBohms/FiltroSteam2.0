@@ -94,7 +94,7 @@ function printItensFiltrados(itens) {
     const preco = itens[i].precoDeVenda;
     const volume = parseInt(itens[i].volumeMedioPorHora);
     const ofertaTotal = itens[i].ofertasQuant;
-    const precoAlvo = itens[i].precoAlvo;
+    const precoAlvo = itens[i].CompraAlvo;
     const encomendasAlvo = itens[i].encomendasPrecoAlvo;
     const vendaAlvo = itens[i].venderAlvo;
     const ofertaPrecoAlvo = itens[i].ofertasPrecoAlvo;
@@ -136,7 +136,4 @@ function capturarDados() {
     cotacaoMaxima
   );
   calculaBook();
-  // calculaEncomendas()
-  // coletaBook()
-  // coletaCotacoes();
 }

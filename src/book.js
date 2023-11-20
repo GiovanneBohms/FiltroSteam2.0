@@ -49,7 +49,7 @@ function subtracaoPorcentagem(preco,porcentagem) {
     let preco = itens[i].precoDeVenda;
     let alvo = subtracaoPorcentagem(preco, configuracao.porcentagemDeReducao);
     console.log(alvo)
-    itens[i].setPrecoAlvo(alvo)
+    itens[i].setCompraAlvo(alvo)
     let j = 0;
       while(j < (itens[i].book.encomendas.length)) {
         if(alvo > itens[i].book.encomendas[j][0]){
