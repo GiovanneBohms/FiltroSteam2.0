@@ -41,7 +41,7 @@ async function renderizador() {
 </form>
 
   </div>
-  <div id="printItensFiltrados" style="font-size:8px "></div>
+  <div id="printItensFiltrados" style="font-size: 10px "></div>
   <p style="text-align: center; font-size: 12px; margin-top:40px;">By: Giovanne Bohms</p>
   
 `;
@@ -73,19 +73,16 @@ function printItensFiltrados(itens) {
   <div style="max-width: 640px;">
     <table id="listaFiltrada" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
         <tr >
-          <th style=" text-align: left; padding: 8px;">Nome</th>
-          <th style=" text-align: left; padding: 8px;">Preço</th>
-          <th style=" text-align: left; padding: 8px;">Preço Alvo</th>
-          <th style=" text-align: left; padding: 8px;">Encomendas Preço Alvo</th>
+          <th style=" text-align: left; ;">Nome</th>
+          <th style=" text-align: left; ;">Preço</th>
+          <th style=" text-align: left; ;">Compra</th>
+          <th style=" text-align: left; ;">Encomendas Alvo</th>
 
-          <th style=" text-align: left; padding: 8px;">Venda Alvo</th>
-          <th style=" text-align: left; padding: 8px;">Oferta Encomenda Alvo</th>
+          <th style=" text-align: left; ;">Venda</th>
+          <th style=" text-align: left; ;">Oferta Alvo</th>
 
-          <th style=" text-align: left; padding: 8px;">Volume</th>
-          <th style=" text-align: left; padding: 8px;">N volumes</th>
-          
-          
-          
+          <th style=" text-align: left; ;">Volume</th>
+          <th style=" text-align: left; ;">N Volumes</th>
           
         </tr>
     </div>
@@ -96,26 +93,25 @@ function printItensFiltrados(itens) {
     const nomeDecodificado = decodeURIComponent(itens[i].name);
     const preco = itens[i].precoDeVenda;
     const volume = parseInt(itens[i].volumeMedioPorHora);
-    const ofertaTotal = itens[i].ofertasQuant
-    const precoAlvo = itens[i].precoAlvo
-    const encomendasAlvo = itens[i].encomendasPrecoAlvo
-    const vendaAlvo = itens[i].venderAlvo
-    const ofertaPrecoAlvo = itens[i].ofertasPrecoAlvo
-   
+    const ofertaTotal = itens[i].ofertasQuant;
+    const precoAlvo = itens[i].precoAlvo;
+    const encomendasAlvo = itens[i].encomendasPrecoAlvo;
+    const vendaAlvo = itens[i].venderAlvo;
+    const ofertaPrecoAlvo = itens[i].ofertasPrecoAlvo;
 
     tabelaFiltrada.innerHTML += `
     <tr>
-     <td style=" text-align: left; padding: 8px;"><a href="${itens[i].link}" target="_blank">${nomeDecodificado}</a></td>
-     <td style=" text-align: left; padding: 8px;">R$: ${preco}</td>
-     <th style=" text-align: left; padding: 8px;">${precoAlvo}</th>
-     <th style=" text-align: left; padding: 8px;">${encomendasAlvo}</th>
+     <td style=" text-align: left; ;"><a href="${itens[i].link}" target="_blank">${nomeDecodificado}</a></td>
+     <td style=" text-align: left; ;">${preco}</td>
+     <th style=" text-align: left; ;">${precoAlvo}</th>
+     <th style=" text-align: left; ;">${encomendasAlvo}</th>
 
-     <th style=" text-align: left; padding: 8px;">${vendaAlvo}</th>
-     <th style=" text-align: left; padding: 8px;">${ofertaPrecoAlvo}</th>
+     <th style=" text-align: left; ;">${vendaAlvo}</th>
+     <th style=" text-align: left; ;">${ofertaPrecoAlvo}</th>
 
 
-     <td style=" text-align: left; padding: 8px;">${volume}</td>
-     <td style=" text-align: left; padding: 8px;">${parseInt(encomendasAlvo/volume)}</td>
+     <td style=" text-align: left; ;">${volume}</td>
+     <td style=" text-align: left; ;">${parseInt(encomendasAlvo / volume)}</td>
      
      
    </tr>
@@ -139,7 +135,7 @@ function capturarDados() {
     cotacaoMinima,
     cotacaoMaxima
   );
-  calculaBook()
+  calculaBook();
   // calculaEncomendas()
   // coletaBook()
   // coletaCotacoes();
