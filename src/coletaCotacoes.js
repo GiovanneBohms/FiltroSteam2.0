@@ -15,6 +15,9 @@ function converteStringEmCotacoes(stringCotacoesEIdBook) {
   const horas = configuracao.horas;
   let cotacoes = [];
   let arrayStringCotacoes = regexCotacao(stringCotacoesEIdBook);
+  if(!arrayStringCotacoes){
+    return null
+  }
   arrayStringCotacoes = arrayStringCotacoes.slice(-horas);
   for (let i = 0; i < arrayStringCotacoes.length; i++) {
     let stringCotacao = arrayStringCotacoes[i];
@@ -42,6 +45,11 @@ async function coletaCotacoes() {
       continue;
     }
     let cotacoes = converteStringEmCotacoes(stringCotacoesEIdBook);
+    if(!cotacoes){
+      console.log("houve exceção na iteração",i)
+      telaAtualizações(`houve exceção na iteração ${i}`)
+      continue;
+    }
     let idBook = regexIdBook(stringCotacoesEIdBook);
     
     itens[i].setCotacoes(cotacoes);
