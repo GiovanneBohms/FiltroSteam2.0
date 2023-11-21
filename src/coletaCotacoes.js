@@ -46,8 +46,9 @@ async function coletaCotacoes() {
     }
     let cotacoes = converteStringEmCotacoes(stringCotacoesEIdBook);
     if(!cotacoes){
-      console.log("houve exceção na iteração",i)
-      telaAtualizações(`houve exceção na iteração ${i}`)
+      console.log("houve exceção na iteração delay de 5 minutos adicionado",i)
+      telaAtualizações(`houve exceção na iteração delay de 5 minutos adicionado${i}`)
+      await delay(1000*60*2)
       continue;
     }
     let idBook = regexIdBook(stringCotacoesEIdBook);
