@@ -84,11 +84,11 @@ function printItensFiltrados(itens) {
           <th style=" text-align: left; ;">Nome</th>
           <th style=" text-align: left; ;">Preço</th>
           <th style=" text-align: left; ;">Compra</th>
-          <th style=" text-align: left; ;">Encomendas Alvo</th>
+          <th style=" text-align: left; ;">0 a 0</th>
           <th style=" text-align: left; ;">Venda</th>
-          <th style=" text-align: left; ;">Oferta Alvo</th>
+          
           <th style=" text-align: left; ;">Volume</th>
-          <th style=" text-align: left; ;">N Volumes</th>
+          <th style=" text-align: left; ;">EA/V</th>
         </tr>
     </div>`;
   let tabelaFiltrada = document.getElementById("listaFiltrada");
@@ -98,19 +98,20 @@ function printItensFiltrados(itens) {
     const preco = itens[i].precoDeVenda;
     const volume = parseInt(itens[i].volumeMedioPorHora);
     const ofertaTotal = itens[i].ofertasQuant;
-    const precoAlvo = itens[i].CompraAlvo;
+    const compraAlvo = itens[i].CompraAlvo;
     const encomendasAlvo = itens[i].encomendasPrecoAlvo;
     const vendaAlvo = itens[i].venderAlvo;
     const ofertaPrecoAlvo = itens[i].ofertasPrecoAlvo;
+    const zeroAZero = parseFloat((compraAlvo*((configuracao.taxa)+1)).toFixed(2))
 
     tabelaFiltrada.innerHTML += `
     <tr>
       <td style=" text-align: left; ;"><a href="${itens[i].link}" target="_blank">${nomeDecodificado}</a></td>
       <td style=" text-align: left; ;">${preco}</td>
-      <th style=" text-align: left; ;">${precoAlvo}</th>
-      <th style=" text-align: left; ;">${encomendasAlvo}</th>
+      <th style=" text-align: left; ;">${compraAlvo}</th>
+      <th style=" text-align: left; ;">${zeroAZero}</th>
       <th style=" text-align: left; ;">${vendaAlvo}</th>
-      <th style=" text-align: left; ;">${ofertaPrecoAlvo}</th>
+      
       <td style=" text-align: left; ;">${volume}</td>
       <td style=" text-align: left; ;">${parseInt(encomendasAlvo / volume)}</td>
     </tr>`;
