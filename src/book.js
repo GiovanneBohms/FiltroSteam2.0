@@ -30,42 +30,43 @@ async function coletaBook(){
   return itens
 }
 
-
 function subtracaoPorcentagem(preco,porcentagem) {
   let result = 0;
   let y = preco
   let reducao = porcentagem
-
   result = y / (1 + reducao);
-
   return parseFloat(result.toFixed(2))
 }
 
  function calculaEncomendas(itens){
   let i = 0;
-  
 
   while (i < itens.length) {
     let preco = itens[i].precoDeVenda;
-    let alvo = subtracaoPorcentagem(preco, configuracao.porcentagemDeReducao);
+    let alvo = subtracaoPorcentagem(preco, (configuracao.porcentagemDeLucro+configuracao.taxa));
     console.log(alvo)
     itens[i].setCompraAlvo(alvo)
     let j = 0;
+
+    if(itens[i].book.encomendas.some(item => item.includes(alvo))){
       while(j < (itens[i].book.encomendas.length)) {
+        
         if(alvo > itens[i].book.encomendas[j][0]){
-          
           itens[i].setEncomendasPrecoAlvo(itens[i].book.encomendas[j][1])
           break;
         }
         j++
+      }}else{
+        let ultimoIndex = (itens[i].book.encomendas.length)-1
+        itens[i].setEncomendasPrecoAlvo(itens[i].book.encomendas[ultimoIndex][1])
       }
+      
     i++;
   }
 }
 
  function calculaOfertas(itens){
   let i = 0;
-  
 
   while (i < itens.length) {
     let volume = itens[i].volumeMedioPorHora;
@@ -84,8 +85,7 @@ function subtracaoPorcentagem(preco,porcentagem) {
 
 async function calculaBook(){
   let itens = await coletaBook();
-   calculaEncomendas(itens)
-   calculaOfertas(itens)
-
+  calculaEncomendas(itens)
+  calculaOfertas(itens)
   printItensFiltrados(itens)
 }
