@@ -22,9 +22,13 @@ async function renderizador() {
       <input type="number" id="valorMinimo" name="valorMinimo" value="430000">
   </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-      <label for="intervaloDeHoras">Intervalo Em Horas no Gráfico:</label>
+      <label for="intervaloDeHoras">Intervalo Em Horas:</label>
       <input type="number" id="intervaloDeHoras" name="intervaloDeHoras" value="168">
   </div>
+  <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+  <label for="porcentagemLucro">porcentagem lucro:</label>
+  <input type="number" id="porcentagemLucro" name="porcentagemLucro" value="15">
+</div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="volumeMedioPorHora">Volume Medio De Negociação Por Hora:</label>
       <input type="number" id="volumeMedioPorHora" name="volumeMedioPorHora" value="100">
@@ -52,10 +56,11 @@ function telaAtualizações(string) {
   const printConfig = document.getElementById("printConfiguracao");
 
   let printConfiguracao = `
-  <span style="font-weight: bold;">Configuração definida:<
-  span><br><br> Total a Pesquisar:  ${configuracao.quantidadeParaPesquisar}<br>
+  <span style="font-weight: bold;">Configuração definida:<span><br><br>
+  Total a Pesquisar:  ${configuracao.quantidadeParaPesquisar}<br>
   Ofertas Minimas:  ${configuracao.ofertasMinimas}<br>
   Intervalo em Horas:  ${configuracao.horas}<br>
+  Porcentagem de Lucro: ${(configuracao.porcentagemDeLucro*100)}%<br>
   Volume Médio por Hora:  ${configuracao.volumeMedioHora}<br>
   Preço Mínimo:  ${configuracao.precoMinimo}<br>
   Preço Máximo:  ${configuracao.precoMaximo}<br><br>
@@ -120,13 +125,15 @@ function capturarDados() {
   let volumeMedio = parseInt(volumeMedioPorHora.value);
   let cotacaoMinima = parseFloat(precoMinimo.value);
   let cotacaoMaxima = parseFloat(precoMaximo.value);
+  let lucroPorcentagem = parseFloat((porcentagemLucro.value)/100)
   config(
     quantidadeItens,
     ofertasMinimas,
     intervaloHora,
     volumeMedio,
     cotacaoMinima,
-    cotacaoMaxima
+    cotacaoMaxima,
+    lucroPorcentagem
   );
   calculaBook();
 }
