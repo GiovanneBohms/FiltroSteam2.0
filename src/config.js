@@ -11,10 +11,11 @@ let configuracao = {
   porcentagemDeLucro:0.15,
   taxa:0.15,
   // CSGO:730 DOTA: 570 TF2: 440
-  idsPermitidos: [730,570,440,753]
+  idsPermitidos: [730,570,440,753],
+  capital: 1000
 };
 
-function config(quantPesquisa,ofMinimas,horasTotais,volumeMedioPorHora,valorMinimo,valorMaximo,lucroPorcentagem){
+function config(quantPesquisa,ofMinimas,horasTotais,volumeMedioPorHora,valorMinimo,valorMaximo,lucroPorcentagem,capital){
 
     configuracao.quantidadeParaPesquisar = quantPesquisa,
     configuracao.ofertasMinimas = ofMinimas,
@@ -26,6 +27,7 @@ function config(quantPesquisa,ofMinimas,horasTotais,volumeMedioPorHora,valorMini
     configuracao.porcentagemDeLucro = lucroPorcentagem
     // CSGO:730 DOTA: 570 TF2: 440
     // idsPermitidos= [730,570,440] 
+    configuracao.capital = capital
   };
 
 class Item{
