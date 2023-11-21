@@ -9,9 +9,10 @@ async function renderizador() {
   <div id="printAtualizacoes" style="max-width: 620px; "> 
   <form id="meuFormulario" style="display: flex; flex-direction: column; max-width: 450px; margin: 16px auto 64px auto;">
 
+  
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-  <label for="caixa"><input type="checkbox" id="caixa" name="opcao" value="case"> Caixa</label>
-  <label for="cartas"><input type="checkbox" id="cartas" name="opcao" value="cartas"> cartas</label><br>
+      <label for="capital">Capital de Trade:</label>
+      <input type="number" id="capitalCaixa" name="capital" value="1000">
   </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="quantItens">Quantidade de Itens para pesquisar:</label>
@@ -57,6 +58,7 @@ function telaAtualizações(string) {
 
   let printConfiguracao = `
   <span style="font-weight: bold;">Configuração definida:<span><br><br>
+  Capital de Trade: R$:${configuracao.capital}<br>
   Total a Pesquisar:  ${configuracao.quantidadeParaPesquisar}<br>
   Ofertas Minimas:  ${configuracao.ofertasMinimas}<br>
   Intervalo em Horas:  ${configuracao.horas}<br>
@@ -84,9 +86,9 @@ function printItensFiltrados(itens) {
           <th style=" text-align: left; ;">Nome</th>
           <th style=" text-align: left; ;">Preço</th>
           <th style=" text-align: left; ;">Compra</th>
+          <th style=" text-align: left; ;">QNT a Comprar</th>
           <th style=" text-align: left; ;">0 a 0</th>
           <th style=" text-align: left; ;">Venda</th>
-          
           <th style=" text-align: left; ;">Volume</th>
           <th style=" text-align: left; ;">EA/V</th>
         </tr>
@@ -103,15 +105,16 @@ function printItensFiltrados(itens) {
     const vendaAlvo = itens[i].venderAlvo;
     const ofertaPrecoAlvo = itens[i].ofertasPrecoAlvo;
     const zeroAZero = parseFloat((compraAlvo*((configuracao.taxa)+1)).toFixed(2))
+    const quantidadeItens = parseInt(configuracao.capital/compraAlvo)
 
     tabelaFiltrada.innerHTML += `
     <tr>
       <td style=" text-align: left; ;"><a href="${itens[i].link}" target="_blank">${nomeDecodificado}</a></td>
       <td style=" text-align: left; ;">${preco}</td>
       <th style=" text-align: left; ;">${compraAlvo}</th>
+      <th style=" text-align: left; ;">${quantidadeItens}</th>
       <th style=" text-align: left; ;">${zeroAZero}</th>
       <th style=" text-align: left; ;">${vendaAlvo}</th>
-      
       <td style=" text-align: left; ;">${volume}</td>
       <td style=" text-align: left; ;">${parseInt(encomendasAlvo / volume)}</td>
     </tr>`;
@@ -127,6 +130,7 @@ function capturarDados() {
   let cotacaoMinima = parseFloat(precoMinimo.value);
   let cotacaoMaxima = parseFloat(precoMaximo.value);
   let lucroPorcentagem = parseFloat((porcentagemLucro.value)/100)
+  let capital = parseFloat(capitalCaixa.value)
   config(
     quantidadeItens,
     ofertasMinimas,
@@ -134,7 +138,8 @@ function capturarDados() {
     volumeMedio,
     cotacaoMinima,
     cotacaoMaxima,
-    lucroPorcentagem
+    lucroPorcentagem,
+    capital
   );
   calculaBook();
 }
