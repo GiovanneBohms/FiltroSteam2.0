@@ -51,17 +51,20 @@ function telaAtualizações(string) {
   const printAtualizacoes = document.getElementById("printAtualizacoes");
   const printConfig = document.getElementById("printConfiguracao");
 
-  let printConfiguracao = `<span style="font-weight: bold;">Configuração definida:</span><br><br> Total a Pesquisar:  ${configuracao.quantidadeParaPesquisar}<br>
-Ofertas Minimas:  ${configuracao.ofertasMinimas}<br>
-Intervalo em Horas:  ${configuracao.horas}<br>
-Volume Médio por Hora:  ${configuracao.volumeMedioHora}<br>
-Preço Mínimo:  ${configuracao.precoMinimo}<br>
-Preço Máximo:  ${configuracao.precoMaximo}<br><br>
-<span style="font-weight: 700;">Aguarde a coleta de dados:</span><br>`;
+  let printConfiguracao = `
+  <span style="font-weight: bold;">Configuração definida:<
+  span><br><br> Total a Pesquisar:  ${configuracao.quantidadeParaPesquisar}<br>
+  Ofertas Minimas:  ${configuracao.ofertasMinimas}<br>
+  Intervalo em Horas:  ${configuracao.horas}<br>
+  Volume Médio por Hora:  ${configuracao.volumeMedioHora}<br>
+  Preço Mínimo:  ${configuracao.precoMinimo}<br>
+  Preço Máximo:  ${configuracao.precoMaximo}<br><br>
+  <span style="font-weight: 700;">Aguarde a coleta de dados:</span><br>`;
 
-  let print = `<div style="max-width: 620px;">
-<p style="word-wrap: break-word;">${string}</p>
-</div>`;
+  let print = `
+  <div style="max-width: 620px;">
+  <p style="word-wrap: break-word;">${string}</p>
+  </div>`;
 
   printConfig.innerHTML = printConfiguracao;
   printAtualizacoes.innerHTML = print;
@@ -77,16 +80,12 @@ function printItensFiltrados(itens) {
           <th style=" text-align: left; ;">Preço</th>
           <th style=" text-align: left; ;">Compra</th>
           <th style=" text-align: left; ;">Encomendas Alvo</th>
-
           <th style=" text-align: left; ;">Venda</th>
           <th style=" text-align: left; ;">Oferta Alvo</th>
-
           <th style=" text-align: left; ;">Volume</th>
           <th style=" text-align: left; ;">N Volumes</th>
-          
         </tr>
-    </div>
-  `;
+    </div>`;
   let tabelaFiltrada = document.getElementById("listaFiltrada");
 
   for (let i = 0; i < itens.length; i++) {
@@ -101,21 +100,15 @@ function printItensFiltrados(itens) {
 
     tabelaFiltrada.innerHTML += `
     <tr>
-     <td style=" text-align: left; ;"><a href="${itens[i].link}" target="_blank">${nomeDecodificado}</a></td>
-     <td style=" text-align: left; ;">${preco}</td>
-     <th style=" text-align: left; ;">${precoAlvo}</th>
-     <th style=" text-align: left; ;">${encomendasAlvo}</th>
-
-     <th style=" text-align: left; ;">${vendaAlvo}</th>
-     <th style=" text-align: left; ;">${ofertaPrecoAlvo}</th>
-
-
-     <td style=" text-align: left; ;">${volume}</td>
-     <td style=" text-align: left; ;">${parseInt(encomendasAlvo / volume)}</td>
-     
-     
-   </tr>
-     `;
+      <td style=" text-align: left; ;"><a href="${itens[i].link}" target="_blank">${nomeDecodificado}</a></td>
+      <td style=" text-align: left; ;">${preco}</td>
+      <th style=" text-align: left; ;">${precoAlvo}</th>
+      <th style=" text-align: left; ;">${encomendasAlvo}</th>
+      <th style=" text-align: left; ;">${vendaAlvo}</th>
+      <th style=" text-align: left; ;">${ofertaPrecoAlvo}</th>
+      <td style=" text-align: left; ;">${volume}</td>
+      <td style=" text-align: left; ;">${parseInt(encomendasAlvo / volume)}</td>
+    </tr>`;
   }
 }
 
