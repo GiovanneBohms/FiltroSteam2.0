@@ -38,11 +38,29 @@ function subtracaoPorcentagem(preco,porcentagem) {
   return parseFloat(result.toFixed(2))
 }
 
+function calculaOfertas(itens){
+  let i = 0;
+
+  while (i < itens.length) {
+    let volume = itens[i].volumeMedioPorHora;
+    let j = 0;
+      while(j < itens[i].book.ofertas.length) {
+        if(volume < itens[i].book.ofertas[j][1]){
+          itens[i].setVenderAlvo(itens[i].book.ofertas[j][0])
+          itens[i].setOfertasPrecoAlvo(itens[i].book.ofertas[j][1])
+          break;
+        }
+        j++
+      }
+    i++;
+  }
+}
+
  function calculaEncomendas(itens){
   let i = 0;
 
   while (i < itens.length) {
-    let preco = itens[i].precoDeVenda;
+    let preco = itens[i].venderAlvo;
     let alvo = subtracaoPorcentagem(preco, (configuracao.porcentagemDeLucro+configuracao.taxa));
     console.log(alvo)
     itens[i].setCompraAlvo(alvo)
@@ -65,27 +83,11 @@ function subtracaoPorcentagem(preco,porcentagem) {
   }
 }
 
- function calculaOfertas(itens){
-  let i = 0;
 
-  while (i < itens.length) {
-    let volume = itens[i].volumeMedioPorHora;
-    let j = 0;
-      while(j < itens[i].book.ofertas.length) {
-        if(volume < itens[i].book.ofertas[j][1]){
-          itens[i].setVenderAlvo(itens[i].book.ofertas[j][0])
-          itens[i].setOfertasPrecoAlvo(itens[i].book.ofertas[j][1])
-          break;
-        }
-        j++
-      }
-    i++;
-  }
-}
 
 async function calculaBook(){
   let itens = await coletaBook();
-  calculaEncomendas(itens)
   calculaOfertas(itens)
+  calculaEncomendas(itens)
   printItensFiltrados(itens)
 }
