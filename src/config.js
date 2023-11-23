@@ -11,7 +11,7 @@ let configuracao = {
   porcentagemDeLucro:0.15,
   taxa:0.15,
   // CSGO:730 DOTA: 570 TF2: 440
-  idsPermitidos: [730,570,440,753],
+  idsPermitidos: [730,570,440],
   capital: 1000
 };
 
