@@ -77,6 +77,7 @@ function calculaOfertas(itens){
       }}else{
         let ultimoIndex = (itens[i].book.encomendas.length)-1
         itens[i].setEncomendasPrecoAlvo(itens[i].book.encomendas[ultimoIndex][1])
+        console.log("excessão em preço alvo de:", itens[i])
       }
       
     i++;
