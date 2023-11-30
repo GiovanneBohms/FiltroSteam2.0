@@ -90,7 +90,7 @@ function printItensFiltrados(itens) {
           <th style=" text-align: left; ;">0 a 0</th>
           <th style=" text-align: left; ;">Venda</th>
           <th style=" text-align: left; ;">Volume</th>
-          <th style=" text-align: left; ;">EA/V</th>
+          <th style=" text-align: left; ;">EA/V24</th>
         </tr>
     </div>`;
   let tabelaFiltrada = document.getElementById("listaFiltrada");
@@ -116,7 +116,7 @@ function printItensFiltrados(itens) {
       <th style=" text-align: left; ;">${zeroAZero}</th>
       <th style=" text-align: left; ;">${vendaAlvo}</th>
       <td style=" text-align: left; ;">${volume}</td>
-      <td style=" text-align: left; ;">${parseInt(encomendasAlvo / volume)}</td>
+      <td style=" text-align: left; ;">${parseInt(encomendasAlvo / (volume*24))}</td>
     </tr>`;
   }
 }
