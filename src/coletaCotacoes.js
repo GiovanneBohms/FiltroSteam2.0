@@ -85,14 +85,5 @@ function ordenaItens(arrayDesordenado){
  return arrayDesordenado.sort((a, b) => b.volumeMedioPorHora - a.volumeMedioPorHora);
 }
 
-async function abrirLinks(itens) {
-  console.log("Em 5 minutos as abas serão abertas")
-  telaAtualizações(`Em 5 minutos as abas serão abertas`)
-  await delay(1000*60*5)
-  for(let i = 0; i< itens.length;i++){
-    let link = itens[i].link;
-    window.open(link, "_blank");
-  }
-  console.log("fim");
-}
+
 
