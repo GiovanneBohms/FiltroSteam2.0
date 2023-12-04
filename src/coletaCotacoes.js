@@ -2,7 +2,7 @@ console.log("./src/coletaCotacoes.js");
 function filtraVolumeCotacoes(arrayCotacoes){
   let volumeTotal = 0
   for(let i =0; i<arrayCotacoes.length; i++){
-    volumeTotal += arrayCotacoes[i][2]
+    volumeTotal += arrayCotacoes[i][1]
   }
   if(volumeTotal/arrayCotacoes.length >= configuracao.volumeMedioHora){
     return [true, volumeTotal/arrayCotacoes.length]
@@ -53,7 +53,11 @@ async function coletaCotacoes() {
     }
     let idBook = regexIdBook(stringCotacoesEIdBook);
     
-    itens[i].setCotacoes(cotacoes);
+    let contacoesSemDate = []
+    cotacoes.forEach(e => {
+      contacoesSemDate.push([e[1],e[2]])
+    });
+    itens[i].setCotacoes(contacoesSemDate);
     itens[i].setIdBook(idBook);
     itens[i].setLink();
     let arraySegundoFiltro = filtraVolumeCotacoes(itens[i].cotacoes)
