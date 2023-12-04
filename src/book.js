@@ -5,7 +5,7 @@ async function coletaBook(){
   let i = 0;
   let d=0
   while(i < itens.length){
-    const book = await coletaOfertaEncomendaDoBook(itens[i].idBook)
+    let book = await coletaOfertaEncomendaDoBook(itens[i].idBook)
 
     if(!book){
       d++
@@ -14,9 +14,18 @@ async function coletaBook(){
       continue;
     }
 
-    const ofertasEncomendas = {
-    encomendas: book.buy_order_graph,
-    ofertas: book.sell_order_graph
+    encomendas = []
+    book.buy_order_graph.forEach(e => {
+      encomendas.push([e[0],e[1]])
+    });
+
+    ofertas =[]
+    book.sell_order_graph.forEach(e => {
+      ofertas.push([e[0],e[1]])
+    });
+    let ofertasEncomendas = {
+    encomendas: encomendas,
+    ofertas: ofertas
     }
     itens[i].setBook(ofertasEncomendas)
 
@@ -88,6 +97,7 @@ function calculaOfertas(itens){
 
 async function calculaBook(){
   let itens = await coletaBook();
+  console.log(itens)
   calculaOfertas(itens)
   calculaEncomendas(itens)
   printItensFiltrados(itens)
