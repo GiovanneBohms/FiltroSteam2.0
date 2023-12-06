@@ -79,49 +79,49 @@ function telaAtualizações(string) {
   printAtualizacoes.innerHTML = print;
 }
 
-function printItensFiltrados(itens) {
-  let itensFiltrados = document.getElementById("printItensFiltrados");
-  itensFiltrados.innerHTML = `
-  <div style="max-width: 640px;">
-    <table id="listaFiltrada" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
-        <tr >
-          <th style=" text-align: left; ;">Nome</th>
+// function printItensFiltrados(itens) {
+//   let itensFiltrados = document.getElementById("printItensFiltrados");
+//   itensFiltrados.innerHTML = `
+//   <div style="max-width: 640px;">
+//     <table id="listaFiltrada" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+//         <tr >
+//           <th style=" text-align: left; ;">Nome</th>
         
-          <th style=" text-align: left; ;">Compra</th>
-          <th style=" text-align: left; ;">QNT a Comprar</th>
-          <th style=" text-align: left; ;">0 a 0</th>
-          <th style=" text-align: left; ;">Venda</th>
-          <th style=" text-align: left; ;">Volume</th>
-          <th style=" text-align: left; ;">Lucro %</th>
-        </tr>
-    </div>`;
-  let tabelaFiltrada = document.getElementById("listaFiltrada");
+//           <th style=" text-align: left; ;">Compra</th>
+//           <th style=" text-align: left; ;">QNT a Comprar</th>
+//           <th style=" text-align: left; ;">0 a 0</th>
+//           <th style=" text-align: left; ;">Venda</th>
+//           <th style=" text-align: left; ;">Volume</th>
+//           <th style=" text-align: left; ;">Lucro %</th>
+//         </tr>
+//     </div>`;
+//   let tabelaFiltrada = document.getElementById("listaFiltrada");
 
-  for (let i = 0; i < itens.length; i++) {
-    const nomeDecodificado = decodeURIComponent(itens[i].name);
-    const preco = itens[i].precoDeVenda;
-    const volume = parseInt(itens[i].volumeMedioPorHora);
-    const ofertaTotal = itens[i].ofertasQuant;
-    const descontoTaxa = itens[i].descontoTaxa;
-    const encomendasAlvo = itens[i].encomendasPrecoAlvo;
-    const vendaAlvo = itens[i].venderAlvo;
-    const ofertaPrecoAlvo = itens[i].ofertasPrecoAlvo;
-    const zeroAZero = parseFloat((descontoTaxa*((configuracao.taxa)+1)).toFixed(2))
-    const quantidadeItens = parseInt(configuracao.capital/descontoTaxa)
+//   for (let i = 0; i < itens.length; i++) {
+//     const nomeDecodificado = decodeURIComponent(itens[i].name);
+//     const preco = itens[i].precoDeVenda;
+//     const volume = parseInt(itens[i].volumeMedioPorHora);
+//     const ofertaTotal = itens[i].ofertasQuant;
+//     const descontoTaxa = itens[i].descontoTaxa;
+//     const encomendasAlvo = itens[i].encomendasPrecoAlvo;
+//     const vendaAlvo = itens[i].venderAlvo;
+//     const ofertaPrecoAlvo = itens[i].ofertasPrecoAlvo;
+//     const zeroAZero = parseFloat((descontoTaxa*((configuracao.taxa)+1)).toFixed(2))
+//     const quantidadeItens = parseInt(configuracao.capital/descontoTaxa)
 
-    tabelaFiltrada.innerHTML += `
-    <tr>
-      <td style=" text-align: left; ;"><a href="${itens[i].link}" target="_blank">${nomeDecodificado}</a></td>
-      <td style=" text-align: left; ;">${preco}</td>
-      <th style=" text-align: left; ;">${descontoTaxa}</th>
-      <th style=" text-align: left; ;">${quantidadeItens}</th>
-      <th style=" text-align: left; ;">${zeroAZero}</th>
-      <th style=" text-align: left; ;">${vendaAlvo}</th>
-      <td style=" text-align: left; ;">${volume}</td>
-      <td style=" text-align: left; ;">${parseInt(encomendasAlvo / (volume*24))}</td>
-    </tr>`;
-  }
-}
+//     tabelaFiltrada.innerHTML += `
+//     <tr>
+//       <td style=" text-align: left; ;"><a href="${itens[i].link}" target="_blank">${nomeDecodificado}</a></td>
+//       <td style=" text-align: left; ;">${preco}</td>
+//       <th style=" text-align: left; ;">${descontoTaxa}</th>
+//       <th style=" text-align: left; ;">${quantidadeItens}</th>
+//       <th style=" text-align: left; ;">${zeroAZero}</th>
+//       <th style=" text-align: left; ;">${vendaAlvo}</th>
+//       <td style=" text-align: left; ;">${volume}</td>
+//       <td style=" text-align: left; ;">${parseInt(encomendasAlvo / (volume*24))}</td>
+//     </tr>`;
+//   }
+// }
 
 function capturarFiltro() {
   botaoColetarDados.removeEventListener("click", capturarFiltro);
