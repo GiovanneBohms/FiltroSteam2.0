@@ -12,7 +12,7 @@ async function renderizador() {
   
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="capital">Capital de Trade:</label>
-      <input type="number" id="capitalCaixa" name="capital" value="1000">
+      <input type="number" id="capitalCaixa" name="capital" value="2153">
   </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="quantItens">Quantidade de Itens para pesquisar:</label>
@@ -20,15 +20,15 @@ async function renderizador() {
   </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="valorMinimo">Ofertas Mínimas:</label>
-      <input type="number" id="valorMinimo" name="valorMinimo" value="430000">
+      <input type="number" id="valorMinimo" name="valorMinimo" value="250000">
   </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="intervaloDeHoras">Intervalo Em Horas:</label>
       <input type="number" id="intervaloDeHoras" name="intervaloDeHoras" value="168">
   </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-  <label for="porcentagemLucro">porcentagem lucro:</label>
-  <input type="number" id="porcentagemLucro" name="porcentagemLucro" value="15">
+  <label for="tempoDeCompra">Tempo de Compra:</label>
+  <input type="number" id="tempoDeCompra" name="tempoDeCompra" value="24">
 </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="volumeMedioPorHora">Volume Medio De Negociação Por Hora:</label>
@@ -42,7 +42,9 @@ async function renderizador() {
       <label for="precoMaximo">Preço Máximo:</label>
       <input type="number" id="precoMaximo" name="precoMaximo" value="4">
   </div>
-  <button type="button" id="botaoFiltro" style="height: 50px; background-color: #1b2838; color: #ebebeb; cursor: pointer; font-weight: bold; margin-top: 10px;">Filtrar Itens</button>
+  <button type="button" id="botaoColetarDados" style="height: 50px; background-color: #1b2838; color: #ebebeb; cursor: pointer; font-weight: bold; margin-top: 10px;">Coletar Dados</button>
+
+  <button type="button" id="botaoDadosColetados" style="height: 50px; background-color: #1b2838; color: #ebebeb; cursor: pointer; font-weight: bold; margin-top: 10px;">Utilizar Dados Já Coletados</button>
 </form>
 
   </div>
@@ -51,7 +53,7 @@ async function renderizador() {
   
 `;
 }
-renderizador();
+
 function telaAtualizações(string) {
   const printAtualizacoes = document.getElementById("printAtualizacoes");
   const printConfig = document.getElementById("printConfiguracao");
@@ -62,7 +64,7 @@ function telaAtualizações(string) {
   Total a Pesquisar:  ${configuracao.quantidadeParaPesquisar}<br>
   Ofertas Minimas:  ${configuracao.ofertasMinimas}<br>
   Intervalo em Horas:  ${configuracao.horas}<br>
-  Porcentagem de Lucro: ${(configuracao.porcentagemDeLucro*100)}%<br>
+  Tempo de Compra: ${(configuracao.tempoDeCompra)}<br>
   Volume Médio por Hora:  ${configuracao.volumeMedioHora}<br>
   Preço Mínimo:  ${configuracao.precoMinimo}<br>
   Preço Máximo:  ${configuracao.precoMaximo}<br><br>
@@ -84,13 +86,13 @@ function printItensFiltrados(itens) {
     <table id="listaFiltrada" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
         <tr >
           <th style=" text-align: left; ;">Nome</th>
-          <th style=" text-align: left; ;">Preço</th>
+        
           <th style=" text-align: left; ;">Compra</th>
           <th style=" text-align: left; ;">QNT a Comprar</th>
           <th style=" text-align: left; ;">0 a 0</th>
           <th style=" text-align: left; ;">Venda</th>
           <th style=" text-align: left; ;">Volume</th>
-          <th style=" text-align: left; ;">EA/V24</th>
+          <th style=" text-align: left; ;">Lucro %</th>
         </tr>
     </div>`;
   let tabelaFiltrada = document.getElementById("listaFiltrada");
@@ -100,18 +102,18 @@ function printItensFiltrados(itens) {
     const preco = itens[i].precoDeVenda;
     const volume = parseInt(itens[i].volumeMedioPorHora);
     const ofertaTotal = itens[i].ofertasQuant;
-    const compraAlvo = itens[i].CompraAlvo;
+    const descontoTaxa = itens[i].descontoTaxa;
     const encomendasAlvo = itens[i].encomendasPrecoAlvo;
     const vendaAlvo = itens[i].venderAlvo;
     const ofertaPrecoAlvo = itens[i].ofertasPrecoAlvo;
-    const zeroAZero = parseFloat((compraAlvo*((configuracao.taxa)+1)).toFixed(2))
-    const quantidadeItens = parseInt(configuracao.capital/compraAlvo)
+    const zeroAZero = parseFloat((descontoTaxa*((configuracao.taxa)+1)).toFixed(2))
+    const quantidadeItens = parseInt(configuracao.capital/descontoTaxa)
 
     tabelaFiltrada.innerHTML += `
     <tr>
       <td style=" text-align: left; ;"><a href="${itens[i].link}" target="_blank">${nomeDecodificado}</a></td>
       <td style=" text-align: left; ;">${preco}</td>
-      <th style=" text-align: left; ;">${compraAlvo}</th>
+      <th style=" text-align: left; ;">${descontoTaxa}</th>
       <th style=" text-align: left; ;">${quantidadeItens}</th>
       <th style=" text-align: left; ;">${zeroAZero}</th>
       <th style=" text-align: left; ;">${vendaAlvo}</th>
@@ -122,14 +124,14 @@ function printItensFiltrados(itens) {
 }
 
 function capturarDados() {
-  botaoFiltro.removeEventListener("click", capturarDados);
+  botaoColetarDados.removeEventListener("click", capturarDados);
   let quantidadeItens = parseInt(quantItens.value);
   let ofertasMinimas = parseInt(valorMinimo.value);
   let intervaloHora = parseInt(intervaloDeHoras.value);
   let volumeMedio = parseInt(volumeMedioPorHora.value);
   let cotacaoMinima = parseFloat(precoMinimo.value);
   let cotacaoMaxima = parseFloat(precoMaximo.value);
-  let lucroPorcentagem = parseFloat((porcentagemLucro.value)/100)
+  let TempoDeCompra = parseInt(tempoDeCompra.value)
   let capital = parseFloat(capitalCaixa.value)
   config(
     quantidadeItens,
@@ -138,8 +140,10 @@ function capturarDados() {
     volumeMedio,
     cotacaoMinima,
     cotacaoMaxima,
-    lucroPorcentagem,
+    TempoDeCompra,
     capital
   );
   calculaBook();
 }
+
+renderizador();
