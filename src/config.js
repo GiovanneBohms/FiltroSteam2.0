@@ -1,3 +1,4 @@
+console.clear()
 console.log("./src/config.js")
 let configuracao = {
   // Config para coleta de API
@@ -29,7 +30,7 @@ function config(quantPesquisa,ofMinimas,horasTotais,volumeMedioPorHora,valorMini
     // idsPermitidos= [730,570,440] 
     configuracao.capital = capital
 
-    console.log(configuracao)
+    console.table(configuracao)
   };
 
 class Item{
