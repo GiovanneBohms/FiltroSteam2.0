@@ -1,3 +1,4 @@
 console.log("./src/index.js");
-console.clear()
+
 botaoColetarDados.addEventListener('click', capturarFiltro)
+botaoDadosColetados.addEventListener("click", estrategia);
