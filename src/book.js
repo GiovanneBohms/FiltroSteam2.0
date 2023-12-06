@@ -96,5 +96,6 @@ function calculaOfertas(itens){
 
 async function calculaBook(){
   let itens = await coletaBook();
-  let itensSalvos = await startDB(itens)
+  await restartDB(itens)
+  await estrategia()
 }
