@@ -1,2 +1,3 @@
 console.log("./src/index.js");
-botaoFiltro.addEventListener('click', capturarDados)
+console.clear()
+botaoColetarDados.addEventListener('click', capturarDados)
