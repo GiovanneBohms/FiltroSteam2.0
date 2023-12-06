@@ -123,8 +123,8 @@ function printItensFiltrados(itens) {
   }
 }
 
-function capturarDados() {
-  botaoColetarDados.removeEventListener("click", capturarDados);
+function capturarFiltro() {
+  botaoColetarDados.removeEventListener("click", capturarFiltro);
   let quantidadeItens = parseInt(quantItens.value);
   let ofertasMinimas = parseInt(valorMinimo.value);
   let intervaloHora = parseInt(intervaloDeHoras.value);
