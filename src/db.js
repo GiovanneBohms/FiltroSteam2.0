@@ -60,7 +60,10 @@ const novoItem = {
 };
 
 async function adicionaitens(arrayItens){
-
+  const db = await openDatabase();
+  const transaction = db.transaction(["Itens"], "readwrite");
+  const objectStore = transaction.objectStore("Itens");
+  objectStore.clear();
   arrayItens.forEach(item => {
    let itemDB = {
       itemName: item.name,
@@ -119,6 +122,7 @@ async function restartDB(itens) {
   await adicionaitens(itens)
   let itensInDB = await obterItens()
   console.log(itensInDB)
+  await estrategia()
   return itensInDB
 }
 
