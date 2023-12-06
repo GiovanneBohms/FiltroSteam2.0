@@ -20,19 +20,20 @@ async function estrategia() {
   const lucro = parseFloat((((venderAlvo/comprarAlvo)-(configuracao.taxa+1))*100).toFixed(1))
   const volumeMoney = parseFloat(((comprarAlvo*(lucro/100))*volumeMedioHora).toFixed(2))
   
-  console.log(item);
+  // console.log(item);
   const objetos = {
-    'name':name,
+    'nome': decodeURIComponent(name),
     'link':link,
-    'Venda': venderAlvo,
-    '0a0': descontoTaxa,
+    'venda': venderAlvo,
+    'zeroAZero': descontoTaxa,
     'compra': comprarAlvo,
     'quantidade': quantidadeAComprar,
     'lucro': lucro,
     'volume': volumeMedioHora,
-    'Dinheiro':volumeMoney
+    'dinheiro':volumeMoney
     }
-    if(lucro >=7){
+    if(lucro >=1 && volumeMoney >= 1){
+      console.log(link)
       itemTradeData.push(objetos)
     }
     
@@ -41,9 +42,12 @@ async function estrategia() {
   itemTradeData.sort((a, b) => b.lucro - a.lucro);
   console.table(itemTradeData)
 
-  return itemTradeData
+  printItensFiltrados(itemTradeData)
 }
+
 function dadosJaColetados(){
+  // console.clear()
+  if(typeof quantItens !== 'undefined' && quantItens !== null){
   let quantidadeItens = parseInt(quantItens.value);
   let ofertasMinimas = parseInt(valorMinimo.value);
   let intervaloHora = parseInt(intervaloDeHoras.value);
@@ -62,6 +66,7 @@ function dadosJaColetados(){
     TempoDeCompra,
     capital
   );
+  }
 }
 
-botaoDadosColetados.addEventListener("click", estrategia);
+
