@@ -113,7 +113,8 @@ async function excluirBancoDeDados() {
   });
 }
 
-async function startDB(itens) {
+async function restartDB(itens) {
+
   await openDatabase()
   await adicionaitens(itens)
   let itensInDB = await obterItens()
