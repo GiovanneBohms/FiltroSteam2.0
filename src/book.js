@@ -35,7 +35,7 @@ async function coletaBook(){
     i++
   }
   console.log("Books coletados",itens.length)
-  console.log(itens)
+  // console.log(itens)
   return itens
 }
 
@@ -70,9 +70,8 @@ function calculaOfertas(itens){
 
   while (i < itens.length) {
     let preco = itens[i].venderAlvo;
-    let alvo = subtracaoPorcentagem(preco, (configuracao.porcentagemDeLucro+configuracao.taxa));
-    console.log(alvo)
-    itens[i].setCompraAlvo(alvo)
+    let alvo = subtracaoPorcentagem(preco, (configuracao.taxa));
+    itens[i].setDescontoTaxa(alvo)
     let j = 0;
 
     if(itens[i].book.encomendas.some(item => item.includes(alvo))){
@@ -97,8 +96,5 @@ function calculaOfertas(itens){
 
 async function calculaBook(){
   let itens = await coletaBook();
-  console.log(itens)
-  calculaOfertas(itens)
-  calculaEncomendas(itens)
-  printItensFiltrados(itens)
+  let itensSalvos = await startDB(itens)
 }
