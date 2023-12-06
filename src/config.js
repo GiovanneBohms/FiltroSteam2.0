@@ -8,14 +8,14 @@ let configuracao = {
   volumeMedioHora: 200,
   precoMinimo: 0.04,
   precoMaximo: 0.30,
-  porcentagemDeLucro:0.15,
+  tempoDeCompra: 24,
   taxa:0.15,
   // CSGO:730 DOTA: 570 TF2: 440
   idsPermitidos: [730,570,440],
   capital: 1000
 };
 
-function config(quantPesquisa,ofMinimas,horasTotais,volumeMedioPorHora,valorMinimo,valorMaximo,lucroPorcentagem,capital){
+function config(quantPesquisa,ofMinimas,horasTotais,volumeMedioPorHora,valorMinimo,valorMaximo,tempoDeCompra,capital){
 
     configuracao.quantidadeParaPesquisar = quantPesquisa,
     configuracao.ofertasMinimas = ofMinimas,
@@ -24,10 +24,12 @@ function config(quantPesquisa,ofMinimas,horasTotais,volumeMedioPorHora,valorMini
     configuracao.volumeMedioHora = volumeMedioPorHora
     configuracao.precoMinimo = valorMinimo,
     configuracao.precoMaximo = valorMaximo
-    configuracao.porcentagemDeLucro = lucroPorcentagem
+    configuracao.tempoDeCompra = tempoDeCompra
     // CSGO:730 DOTA: 570 TF2: 440
     // idsPermitidos= [730,570,440] 
     configuracao.capital = capital
+
+    console.log(configuracao)
   };
 
 class Item{
@@ -35,7 +37,7 @@ class Item{
   name
   ofertasQuant
   precoDeVenda
-  CompraAlvo
+  descontoTaxa
   encomendasPrecoAlvo
   venderAlvo
   ofertasPrecoAlvo
@@ -57,7 +59,7 @@ class Item{
     this.idBook = idBook;
   }
   setVolumeMedioPorHora(volumeMedioPorHora){
-    this.volumeMedioPorHora = volumeMedioPorHora
+    this.volumeMedioPorHora = parseInt(volumeMedioPorHora)
   }
   setLink(){
     this.link = `https://steamcommunity.com/market/listings/${this.id}/${this.name}`
@@ -65,8 +67,8 @@ class Item{
   setBook(book){
     this.book = book;
   }
-  setCompraAlvo(CompraAlvo){
-    this.CompraAlvo = CompraAlvo
+  setDescontoTaxa(descontoTaxa){
+    this.descontoTaxa = descontoTaxa
   }
   setEncomendasPrecoAlvo(encomendasPrecoAlvo){
     this.encomendasPrecoAlvo = encomendasPrecoAlvo
