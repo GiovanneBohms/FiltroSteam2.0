@@ -12,6 +12,7 @@ async function estrategia() {
   const bookOferta = item.bookOferta
   const bookEncomenda = item.bookEncomenda
   const volumeMedioHora = item.volumeMedioHora
+
   const venderAlvo = (bookOferta.find(item => item[1] >= volumeMedioHora))[0];
   const comprarAlvo = (bookEncomenda.find(item => item[1] >= (volumeMedioHora*configuracao.tempoDeCompra)))[0]
   const quantidadeAComprar = parseInt(configuracao.capital/comprarAlvo)
@@ -20,7 +21,6 @@ async function estrategia() {
   const volumeMoney = parseFloat(((comprarAlvo*(lucro/100))*volumeMedioHora).toFixed(2))
   
 
-  // console.log(item);
   const objetos = {
     'nome': decodeURIComponent(name),
     'link':link,
@@ -32,10 +32,7 @@ async function estrategia() {
     'volume': volumeMedioHora,
     'dinheiro':volumeMoney
     }
-    // if(lucro >=1 && volumeMoney >= 1){
-    //   console.log(link)
-      
-    // }
+
     itemTradeData.push(objetos)
     i++
   }
