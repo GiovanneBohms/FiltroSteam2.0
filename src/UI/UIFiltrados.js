@@ -1,4 +1,4 @@
-console.log("./UI/UIFIltrados.js")
+console.log("./src/UI/UIFIltrados.js")
 
 function printItensFiltrados(itens) {
   let itensFiltrados = document.getElementById("printItensFiltrados");

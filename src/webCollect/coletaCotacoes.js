@@ -1,4 +1,4 @@
-console.log("./webCollect/coletaCotacoes.js");
+console.log("./src/webCollect/coletaCotacoes.js");
 function filtraVolumeCotacoes(arrayCotacoes){
   let volumeTotal = 0
   for(let i =0; i<arrayCotacoes.length; i++){

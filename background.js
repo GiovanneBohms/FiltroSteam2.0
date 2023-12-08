@@ -32,15 +32,15 @@ chrome.action.onClicked.addListener(async (tab) => {
           target: { tabId: tab.id },
           files: [
             "./src/config.js",
-            "./webCollect/APIs.js",
+            "./src/webCollect/APIs.js",
+            "./src/webCollect/coletaIdNamePriceQuant.js",
+            "./src/webCollect/coletaCotacoes.js",
+            "./src/webCollect/book.js",
             "./src/dependencias.js",
             "./src/db.js",
-            "./webCollect/coletaIdNamePriceQuant.js",
-            "./webCollect/coletaCotacoes.js",
-            "./UI/telas.js",
-            "./webCollect/book.js",
+            "./src/UI/telas.js",
+            "./src/UI/UIFiltrados.js",
             "./src/trading.js",
-            "./UI/UIFiltrados.js",
             "./src/index.js"
           ]
         })

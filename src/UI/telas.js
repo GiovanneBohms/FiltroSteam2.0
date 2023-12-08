@@ -1,4 +1,4 @@
-console.log("./UI/telas,js");
+console.log("./src/UI/telas,js");
 
 async function renderizador() {
   const telaInput = document.getElementById("popularItemsRows");
@@ -101,5 +101,3 @@ function capturarFiltro() {
   );
   calculaBook();
 }
-
-renderizador();

@@ -1,4 +1,4 @@
-console.log("./webCollect/APIs.js");
+console.log("./src/webCollect/APIs.js");
 
 // Coleta Name e Id de itens
 async function listaDeItens(fim) {
