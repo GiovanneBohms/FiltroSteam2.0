@@ -1,4 +1,4 @@
-console.log("./src/book.js")
+console.log("./webCollect/book.js")
 
 async function coletaBook(){
   const itens = await coletaCotacoes()

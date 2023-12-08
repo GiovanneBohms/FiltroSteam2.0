@@ -1,4 +1,4 @@
-console.log("./src/coletaIdNamePriceQuant.js");
+console.log("./webCollect/coletaIdNamePriceQuant.js");
 
 async function coletaItensComConfig(intervalo) {
   const objetos = await listaDeItens(intervalo);
