@@ -1,4 +1,4 @@
-console.log("./src/UIFIltrados.js")
+console.log("./UI/UIFIltrados.js")
 
 function printItensFiltrados(itens) {
   let itensFiltrados = document.getElementById("printItensFiltrados");
@@ -34,10 +34,22 @@ function printItensFiltrados(itens) {
           <th style=" text-align: left; ;">R$: ${itemFiltrado.dinheiro}</th>
     </tr>`;
   }
+  const nomeTabela = document.getElementById('nome-UIFiltrado')
+  
+  nomeTabela.addEventListener('click',function(){
+    verificaClick("nome")
+  })
+
+}
+function verificaClick(nome){
+
+  if(nome ==="nome"){
+    console.log("é nome")
+  }else{
+    console.log("não é nome")
+  }
+  
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Seu código JavaScript que depende do DOM vai aqui
-  console.log('O DOM foi totalmente carregado e está pronto para ser manipulado!');
-});
+// nomeTabela.addEventListener("click", verificaClick);

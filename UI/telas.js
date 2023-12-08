@@ -1,4 +1,4 @@
-console.log("./src/telas,js");
+console.log("./UI/telas,js");
 
 async function renderizador() {
   const telaInput = document.getElementById("popularItemsRows");
