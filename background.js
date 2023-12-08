@@ -30,7 +30,19 @@ chrome.action.onClicked.addListener(async (tab) => {
       await chrome.scripting
         .executeScript({
           target: { tabId: tab.id },
-          files: ["./src/config.js","./src/APIs.js","./src/dependencias.js","./src/db.js","./src/coletaIdNamePriceQuant.js","./src/coletaCotacoes.js","./src/telas.js","./src/book.js","./src/trading.js","./src/UIFiltrados.js","./src/index.js"],
+          files: [
+            "./src/config.js",
+            "./webCollect/APIs.js",
+            "./src/dependencias.js",
+            "./src/db.js",
+            "./webCollect/coletaIdNamePriceQuant.js",
+            "./webCollect/coletaCotacoes.js",
+            "./UI/telas.js",
+            "./webCollect/book.js",
+            "./src/trading.js",
+            "./UI/UIFiltrados.js",
+            "./src/index.js"
+          ]
         })
         .then(() => console.log("script injected"));
     } else if (nextState === "OFF") {
