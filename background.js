@@ -38,6 +38,12 @@ chrome.action.onClicked.addListener(async (tab) => {
       //   files: ["focus-mode.css"],
       //   target: { tabId: tab.id },
       // });
+      await chrome.scripting
+      .executeScript({
+        target: { tabId: tab.id },
+        files: ["./off/off.js"],
+      })
+      .then(() => console.log("script injected"));
     }
   }
 });
