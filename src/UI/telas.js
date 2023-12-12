@@ -51,7 +51,9 @@ async function renderizador() {
   <div id="printItensFiltrados" style="font-size: 10px "></div>
   <p style="text-align: center; font-size: 12px; margin-top:40px;">By: Giovanne Bohms</p>
   
-`;
+`
+botaoColetarDados.addEventListener('click', function(){capturarFiltro("coletarDados")} )
+botaoDadosColetados.addEventListener("click", estrategia);
 }
 
 function telaAtualizações(string) {
@@ -79,8 +81,8 @@ function telaAtualizações(string) {
   printAtualizacoes.innerHTML = print;
 }
 
-function capturarFiltro() {
-  botaoColetarDados.removeEventListener("click", capturarFiltro);
+function capturarFiltro(origem) {
+
   let quantidadeItens = parseInt(quantItens.value);
   let ofertasMinimas = parseInt(valorMinimo.value);
   let intervaloHora = parseInt(intervaloDeHoras.value);
@@ -99,5 +101,8 @@ function capturarFiltro() {
     TempoDeCompra,
     capital
   );
-  calculaBook();
+  if(origem==="coletarDados"){
+    calculaBook();
+    botaoColetarDados.removeEventListener("click", capturarFiltro);
+  }
 }
