@@ -1,8 +1,23 @@
 console.log("./src/trading.js");
 
+function rastreiNumerosProibidos(itens) {
+  let listaPrimaria = [];
+  let listaProibida = [];
+  let valores = 0;
+  let j = 0;
+
+  for (let i = 0; i < 1000; i++) {
+    valores += 1;
+    listaPrimaria.push(valores / 100);
+  }
+}
+
 async function estrategia() {
-  dadosJaColetados()
+  // console.clear
+  // dadosJaColetados()
+  capturarFiltro("estrategia")
   let itens = await visualizaDB();
+  // rastreiNumerosProibidos(itens)
   let itemTradeData =[]
   let i = 0
   while(i<itens.length){
@@ -42,28 +57,28 @@ async function estrategia() {
   printItensFiltrados(itemTradeData)
 }
 
-function dadosJaColetados(){
-  // console.clear()
-  if(typeof quantItens !== 'undefined' && quantItens !== null){
-  let quantidadeItens = parseInt(quantItens.value);
-  let ofertasMinimas = parseInt(valorMinimo.value);
-  let intervaloHora = parseInt(intervaloDeHoras.value);
-  let volumeMedio = parseInt(volumeMedioPorHora.value);
-  let cotacaoMinima = parseFloat(precoMinimo.value);
-  let cotacaoMaxima = parseFloat(precoMaximo.value);
-  let TempoDeCompra = parseInt(tempoDeCompra.value)
-  let capital = parseFloat(capitalCaixa.value)
-  config(
-    quantidadeItens,
-    ofertasMinimas,
-    intervaloHora,
-    volumeMedio,
-    cotacaoMinima,
-    cotacaoMaxima,
-    TempoDeCompra,
-    capital
-  );
-  }
-}
+// function dadosJaColetados(){
+//   // console.clear()
+//   if(typeof quantItens !== 'undefined' && quantItens !== null){
+//   let quantidadeItens = parseInt(quantItens.value);
+//   let ofertasMinimas = parseInt(valorMinimo.value);
+//   let intervaloHora = parseInt(intervaloDeHoras.value);
+//   let volumeMedio = parseInt(volumeMedioPorHora.value);
+//   let cotacaoMinima = parseFloat(precoMinimo.value);
+//   let cotacaoMaxima = parseFloat(precoMaximo.value);
+//   let TempoDeCompra = parseInt(tempoDeCompra.value)
+//   let capital = parseFloat(capitalCaixa.value)
+//   config(
+//     quantidadeItens,
+//     ofertasMinimas,
+//     intervaloHora,
+//     volumeMedio,
+//     cotacaoMinima,
+//     cotacaoMaxima,
+//     TempoDeCompra,
+//     capital
+//   );
+//   }
+// }
 
 
