@@ -8,13 +8,22 @@ function printItensFiltrados(itens) {
     <table id="listaFiltrada" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
         <tr >
           <th id="nome-UIFiltrado" ${css}>Nome</th>
-          <th id="vendasUIFiltrado" ${css}>Venda</th>
+          <th id="vendasUIFiltrado" ${css}>Sell</th>
           <th id="zeroAZero-UIFiltrado" ${css}>0a0</th>
-          <th id="compra-UIFiltrado" ${css}>Compra</th>
-          <th id="quantidade-UIFiltrado" ${css}>Quantidade</th>
+          <th id="compra-UIFiltrado" ${css}>Buy</th>
+          <th id="quantidade-UIFiltrado" ${css}>Qnt</th>
+          <th id="volume-UIFiltrado" ${css}>Vol</th>
           <th id="lucro-UIFiltrado" ${css}>Lucro</th>
-          <th id="volume-UIFiltrado" ${css}>Volume</th>
-          <th id="liquidez-UIFiltrado" ${css}>Liquidez</th>
+          
+          <th id="lucro-UIFiltradoUD" ${css}>LUD</th>
+          <th id="volume-UIFiltradoUD" ${css}>VUD</th>
+          
+          <th id="vendasUIFiltradoUD" ${css}>SUD</th>
+          <th id="zeroAZero-UIFiltradoUD" ${css}>0UD</th>
+          <th id="compra-UIFiltradoUD" ${css}>BUD</th>
+          <th id="quantidade-UIFiltradoUD" ${css}>QUD</th>
+          
+          
         </tr>
     </div>`;
 
@@ -22,6 +31,27 @@ function printItensFiltrados(itens) {
 
   for (let i = 0; i < itens.length; i++) {
     let itemFiltrado = itens[i]
+    let diferencaLucro = parseFloat((itemFiltrado.lucroUD-itemFiltrado.lucro).toFixed(2))
+
+    const StringDiferencaLucro = ()=>{
+      if(diferencaLucro!=0){
+        return `${parseFloat((itemFiltrado.lucroUD-itemFiltrado.lucro).toFixed(2))}%`
+      }else{
+        return ""
+      }
+    }
+
+    const cor = (diferencaLucro) => {
+      if (diferencaLucro > 0) {
+        return "background-color: green; color: white;";
+      } else if (diferencaLucro < 0) {
+        return "background-color: #ff3333; color: white;";
+      } else {
+        return "";
+      }
+    };
+    
+    
     tabelaFiltrada.innerHTML += `
     <tr>  
           <th style=" text-align: left; ;">${itemFiltrado.nome}</th>
@@ -29,9 +59,15 @@ function printItensFiltrados(itens) {
           <th style=" text-align: left; ;">${itemFiltrado.zeroAZero}</th>
           <th style=" text-align: left; ;">${itemFiltrado.compra}</th>
           <th style=" text-align: left; ;">${itemFiltrado.quantidade}</th>
-          <th style="text-align: left;"><a href="${itemFiltrado.link}" target="_blank">${itemFiltrado.lucro}%</a></th>
           <th style=" text-align: left; ;">${itemFiltrado.volume}</th>
-          <th style=" text-align: left; ;">R$: ${itemFiltrado.dinheiro}</th>
+          <th style="text-align: left;"><a href="${itemFiltrado.link}" target="_blank">${itemFiltrado.lucro}%</a></th>
+          <th style="text-align: left; ${cor(diferencaLucro)}"><a href="${itemFiltrado.link}" target="_blank">${StringDiferencaLucro()}</a></th>
+          <th style=" text-align: left; ;">${itemFiltrado.volumeUD}</th>
+          <th style=" text-align: left; ;">${itemFiltrado.vendaUD}</th>
+          <th style=" text-align: left; ;">${itemFiltrado.zeroAZeroUD}</th>
+          <th style=" text-align: left; ;">${itemFiltrado.compraUD}</th>
+          <th style=" text-align: left; ;">${itemFiltrado.quantidadeUD}</th>
+          
     </tr>`;
   }
   const nomeTabela = document.getElementById('nome-UIFiltrado')
