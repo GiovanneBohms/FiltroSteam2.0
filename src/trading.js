@@ -71,8 +71,9 @@ async function estrategia() {
     'lucroUD': lucroUD,
     'dinheiroUD':volumeMoneyUD,
     }
-
-    itemTradeData.push(objetos)
+    if(objetos.volume>=configuracao.volumeMedioHora && (lucro >=15 || lucroUD >= 15)){
+      itemTradeData.push(objetos)
+    }
     console.log(objetos)
     i++
   }
@@ -82,28 +83,5 @@ async function estrategia() {
   printItensFiltrados(itemTradeData)
 }
 
-// function dadosJaColetados(){
-//   // console.clear()
-//   if(typeof quantItens !== 'undefined' && quantItens !== null){
-//   let quantidadeItens = parseInt(quantItens.value);
-//   let ofertasMinimas = parseInt(valorMinimo.value);
-//   let intervaloHora = parseInt(intervaloDeHoras.value);
-//   let volumeMedio = parseInt(volumeMedioPorHora.value);
-//   let cotacaoMinima = parseFloat(precoMinimo.value);
-//   let cotacaoMaxima = parseFloat(precoMaximo.value);
-//   let TempoDeCompra = parseInt(tempoDeCompra.value)
-//   let capital = parseFloat(capitalCaixa.value)
-//   config(
-//     quantidadeItens,
-//     ofertasMinimas,
-//     intervaloHora,
-//     volumeMedio,
-//     cotacaoMinima,
-//     cotacaoMaxima,
-//     TempoDeCompra,
-//     capital
-//   );
-//   }
-// }
 
 

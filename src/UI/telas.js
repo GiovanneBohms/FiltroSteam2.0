@@ -12,15 +12,15 @@ async function renderizador() {
   
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="capital">Capital de Trade:</label>
-      <input type="number" id="capitalCaixa" name="capital" value="2153">
+      <input type="number" id="capitalCaixa" name="capital" value="1000">
   </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="quantItens">Quantidade de Itens para pesquisar:</label>
-      <input type="number" id="quantItens" name="quantItens" value="100">
+      <input type="number" id="quantItens" name="quantItens" value="1000">
   </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="valorMinimo">Ofertas Mínimas:</label>
-      <input type="number" id="valorMinimo" name="valorMinimo" value="250000">
+      <input type="number" id="valorMinimo" name="valorMinimo" value="1000">
   </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="intervaloDeHoras">Intervalo Em Horas:</label>
@@ -32,15 +32,15 @@ async function renderizador() {
 </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="volumeMedioPorHora">Volume Medio De Negociação Por Hora:</label>
-      <input type="number" id="volumeMedioPorHora" name="volumeMedioPorHora" value="100">
+      <input type="number" id="volumeMedioPorHora" name="volumeMedioPorHora" value="300">
   </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="precoMinimo">Preço Mínimo:</label>
-      <input type="number" id="precoMinimo" name="precoMinimo" value="1">
+      <input type="number" id="precoMinimo" name="precoMinimo" value="0.15">
   </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="precoMaximo">Preço Máximo:</label>
-      <input type="number" id="precoMaximo" name="precoMaximo" value="4">
+      <input type="number" id="precoMaximo" name="precoMaximo" value="10">
   </div>
   <button type="button" id="botaoColetarDados" style="height: 50px; background-color: #1b2838; color: #ebebeb; cursor: pointer; font-weight: bold; margin-top: 10px;">Coletar Dados</button>
 
