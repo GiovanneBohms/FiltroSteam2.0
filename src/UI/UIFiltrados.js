@@ -29,6 +29,9 @@ function printItensFiltrados(itens) {
 
   let tabelaFiltrada = document.getElementById("listaFiltrada");
 
+  const green = "background-color: green; color: white;"
+  const red = "background-color: #ff3333; color: white;"
+
   for (let i = 0; i < itens.length; i++) {
     let itemFiltrado = itens[i]
     let diferencaLucro = parseFloat((itemFiltrado.lucroUD-itemFiltrado.lucro).toFixed(2))
@@ -41,15 +44,24 @@ function printItensFiltrados(itens) {
       }
     }
 
-    const cor = (diferencaLucro) => {
+    const diferenciaLucro = (diferencaLucro) => {
       if (diferencaLucro > 0) {
-        return "background-color: green; color: white;";
+        return green;
       } else if (diferencaLucro < 0) {
-        return "background-color: #ff3333; color: white;";
+        return red;
       } else {
         return "";
       }
     };
+
+    const diferenciaVolume = (volumeUD, volume )=>{
+      if(itemFiltrado.volumeUD > itemFiltrado.volume ){
+        return green
+      }else if (itemFiltrado.volumeUD < itemFiltrado.volume ){
+        return red
+      }
+
+    }
     
     
     tabelaFiltrada.innerHTML += `
@@ -61,8 +73,8 @@ function printItensFiltrados(itens) {
           <th style=" text-align: left; ;">${itemFiltrado.quantidade}</th>
           <th style=" text-align: left; ;">${itemFiltrado.volume}</th>
           <th style="text-align: left;"><a href="${itemFiltrado.link}" target="_blank">${itemFiltrado.lucro}%</a></th>
-          <th style="text-align: left; ${cor(diferencaLucro)}"><a href="${itemFiltrado.link}" target="_blank">${StringDiferencaLucro()}</a></th>
-          <th style=" text-align: left; ;">${itemFiltrado.volumeUD}</th>
+          <th style="text-align: left; ${diferenciaLucro(diferencaLucro)}"><a href="${itemFiltrado.link}" target="_blank">${StringDiferencaLucro()}</a></th>
+          <th style=" text-align: left;${diferenciaVolume(itemFiltrado.volumeUD, itemFiltrado.volume )} ;">${itemFiltrado.volumeUD}</th>
           <th style=" text-align: left; ;">${itemFiltrado.vendaUD}</th>
           <th style=" text-align: left; ;">${itemFiltrado.zeroAZeroUD}</th>
           <th style=" text-align: left; ;">${itemFiltrado.compraUD}</th>
