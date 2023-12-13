@@ -13,11 +13,10 @@ function rastreiNumerosProibidos(itens) {
 }
 
 async function estrategia() {
-  // console.clear
-  // dadosJaColetados()
+
   capturarFiltro("estrategia")
   let itens = await visualizaDB();
-  // rastreiNumerosProibidos(itens)
+
   let itemTradeData =[]
   let i = 0
   while(i<itens.length){
@@ -34,17 +33,18 @@ async function estrategia() {
   const descontoTaxa = parseFloat((comprarAlvo*(configuracao.taxa+1)).toFixed(2))
   const lucro = parseFloat((((venderAlvo/comprarAlvo)-(configuracao.taxa+1))*100).toFixed(1))
   const volumeMoney = parseFloat(((comprarAlvo*(lucro/100))*volumeMedioHora).toFixed(2))
+  const tempoAlvo = parseInt(((bookEncomenda.find(item => item[1] >= (volumeMedioHora*configuracao.tempoDeCompra)))[1])/volumeMedioHora)
   
-  /// elementos de volumeMedioHoraultimosDias
+ 
   let volumeTodo = 0
   const ultimosDias = item.cotacoes.slice(-72)
   ultimosDias.forEach(e => {
     volumeTodo +=e [1]
   });
   let volumeMedioHoraUD = parseInt(volumeTodo/ultimosDias.length)
-  // volumeMedioHoraUD = 100
   const venderAlvoUD = (bookOferta.find(item => item[1] >= volumeMedioHoraUD))[0];
   const comprarAlvoUD = (bookEncomenda.find(item => item[1] >= (volumeMedioHoraUD*configuracao.tempoDeCompra)))[0]
+  const tempoAlvoUD = parseInt(((bookEncomenda.find(item => item[1] >= (volumeMedioHoraUD*configuracao.tempoDeCompra)))[1])/volumeMedioHoraUD)
   const quantidadeAComprarUD = parseInt(configuracao.capital/comprarAlvoUD)
   const descontoTaxaUD = parseFloat((comprarAlvoUD*(configuracao.taxa+1)).toFixed(2))
   const lucroUD = parseFloat((((venderAlvoUD/comprarAlvoUD)-(configuracao.taxa+1))*100).toFixed(1))
@@ -61,9 +61,10 @@ async function estrategia() {
     'lucro': lucro,
     'volume': volumeMedioHora,
     'dinheiro':volumeMoney,
+    'tempoAlvo':tempoAlvo,
 
     'volumeUD': volumeMedioHoraUD,
-
+    'tempoAlvoUD':tempoAlvoUD,
     'vendaUD': venderAlvoUD,
     'zeroAZeroUD': descontoTaxaUD,
     'compraUD': comprarAlvoUD,

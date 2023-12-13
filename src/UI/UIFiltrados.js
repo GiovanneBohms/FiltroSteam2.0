@@ -12,16 +12,18 @@ function printItensFiltrados(itens) {
           <th id="zeroAZero-UIFiltrado" ${css}>0a0</th>
           <th id="compra-UIFiltrado" ${css}>Buy</th>
           <th id="quantidade-UIFiltrado" ${css}>Qnt</th>
+          <th id="tempoAlvo-UIFiltrado" ${css}>T.A</th>
           <th id="volume-UIFiltrado" ${css}>Vol</th>
           <th id="lucro-UIFiltrado" ${css}>Lucro</th>
           
-          <th id="lucro-UIFiltradoUD" ${css}>LUD</th>
-          <th id="volume-UIFiltradoUD" ${css}>VUD</th>
+          <th id="lucro-UIFiltradoUD" ${css}>L-UD↑</th>
+          <th id="volume-UIFiltradoUD" ${css}>V-UD</th>
           
-          <th id="vendasUIFiltradoUD" ${css}>SUD</th>
-          <th id="zeroAZero-UIFiltradoUD" ${css}>0UD</th>
-          <th id="compra-UIFiltradoUD" ${css}>BUD</th>
-          <th id="quantidade-UIFiltradoUD" ${css}>QUD</th>
+          
+          <th id="zeroAZero-UIFiltradoUD" ${css}>0a0-UD</th>
+          <th id="compra-UIFiltradoUD" ${css}>BUY-UD</th>
+          <th id="quantidade-UIFiltradoUD" ${css}>QNT-UD</th>
+          <th id="tempoAlvoUD-UIFiltradoUD" ${css}>T.A-UD</th>
           
           
         </tr>
@@ -71,14 +73,16 @@ function printItensFiltrados(itens) {
           <th style=" text-align: left; ;">${itemFiltrado.zeroAZero}</th>
           <th style=" text-align: left; ;">${itemFiltrado.compra}</th>
           <th style=" text-align: left; ;">${itemFiltrado.quantidade}</th>
+          <th style=" text-align: left; ;">${itemFiltrado.tempoAlvo}</th>
           <th style=" text-align: left; ;">${itemFiltrado.volume}</th>
           <th style="text-align: left;"><a href="${itemFiltrado.link}" target="_blank">${itemFiltrado.lucro}%</a></th>
           <th style="text-align: left; ${diferenciaLucro(diferencaLucro)}"><a href="${itemFiltrado.link}" target="_blank">${StringDiferencaLucro()}</a></th>
           <th style=" text-align: left;${diferenciaVolume(itemFiltrado.volumeUD, itemFiltrado.volume )} ;">${itemFiltrado.volumeUD}</th>
-          <th style=" text-align: left; ;">${itemFiltrado.vendaUD}</th>
+          
           <th style=" text-align: left; ;">${itemFiltrado.zeroAZeroUD}</th>
           <th style=" text-align: left; ;">${itemFiltrado.compraUD}</th>
           <th style=" text-align: left; ;">${itemFiltrado.quantidadeUD}</th>
+          <th style=" text-align: left; ;">${itemFiltrado.tempoAlvoUD}</th>
           
     </tr>`;
   }
