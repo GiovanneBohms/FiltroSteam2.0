@@ -4,6 +4,13 @@ function tempoDeCompraSubtraido(bookEncomenda, volumeMedioHora) {
   let tempoAlvo = 0;
   let reducaoDoTempoDeCompra = 0;
   reducaoDoTempoDeCompra = configuracao.tempoDeCompra;
+
+  if(volumeMedioHora*reducaoDoTempoDeCompra > bookEncomenda[bookEncomenda.length-1][1]){
+    tempoAlvo = parseInt(bookEncomenda[bookEncomenda.length-1][1]/volumeMedioHora)
+    console.log("tempoAlvo Corrigido:",tempoAlvo)
+    return parseInt(tempoAlvo)
+  }
+
   do {
     tempoAlvo = parseInt(((bookEncomenda.find(item => item[1] >= (volumeMedioHora * reducaoDoTempoDeCompra)))[1]) / volumeMedioHora);
     if(tempoAlvo>configuracao.tempoDeCompra && reducaoDoTempoDeCompra >1){
@@ -71,7 +78,7 @@ async function estrategia() {
     'lucroUD': lucroUD,
     'dinheiroUD':volumeMoneyUD,
     }
-    if(itemTratado.volume>=configuracao.volumeMedioHora && lucro >=15){
+    if(itemTratado.volume>=configuracao.volumeMedioHora ){
       itemTradeData.push(itemTratado)
     }
     console.log(itemTratado)
