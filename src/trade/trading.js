@@ -1,4 +1,4 @@
-console.log("./src/trading.js");
+console.log("./src/trade/trading.js");
 
 function tempoDeCompraSubtraido(bookEncomenda, volumeMedioHora) {
   let tempoAlvo = 0;
@@ -18,7 +18,6 @@ function tempoDeCompraSubtraido(bookEncomenda, volumeMedioHora) {
     }else{break}
   } while (tempoAlvo > configuracao.tempoDeCompra);
   if(tempoAlvo>configuracao.tempoDeCompra){tempoAlvo=configuracao.tempoDeCompra}
-  console.log(tempoAlvo, configuracao.tempoDeCompra);
   return tempoAlvo
 }
 
@@ -49,7 +48,9 @@ async function estrategia() {
   ultimosDias.forEach(e => {
     volumeTodoUD +=e [1]
   });
-  const volumeMedioHoraUD = parseInt(volumeTodoUD/ultimosDias.length)
+
+  let volumeMedioHoraUD = parseInt(volumeTodoUD/ultimosDias.length)
+
   const venderAlvoUD = (bookOferta.find(item => item[1] >= volumeMedioHoraUD))[0];
   const tempoAlvoUD = tempoDeCompraSubtraido(bookEncomenda, volumeMedioHoraUD)
   const comprarAlvoUD = (bookEncomenda.find(item => item[1] >= (volumeMedioHoraUD*tempoAlvoUD)))[0]

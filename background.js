@@ -40,7 +40,7 @@ chrome.action.onClicked.addListener(async (tab) => {
             "./src/db.js",
             "./src/UI/telas.js",
             "./src/UI/UIFiltrados.js",
-            "./src/trading.js",
+            "./src/trade/trading.js",
             "./src/index.js"
           ]
         })
