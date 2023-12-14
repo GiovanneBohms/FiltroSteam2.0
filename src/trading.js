@@ -1,22 +1,24 @@
 console.log("./src/trading.js");
 
-function rastreiNumerosProibidos(itens) {
-  let listaPrimaria = [];
-  let listaProibida = [];
-  let valores = 0;
-  let j = 0;
-
-  for (let i = 0; i < 1000; i++) {
-    valores += 1;
-    listaPrimaria.push(valores / 100);
-  }
+function tempoDeCompraSubtraido(bookEncomenda, volumeMedioHora) {
+  let tempoAlvo = 0;
+  let reducaoDoTempoDeCompra = 0;
+  reducaoDoTempoDeCompra = configuracao.tempoDeCompra;
+  do {
+    tempoAlvo = parseInt(((bookEncomenda.find(item => item[1] >= (volumeMedioHora * reducaoDoTempoDeCompra)))[1]) / volumeMedioHora);
+    if(tempoAlvo>configuracao.tempoDeCompra && reducaoDoTempoDeCompra >1){
+      reducaoDoTempoDeCompra--;
+    }else{break}
+  } while (tempoAlvo > configuracao.tempoDeCompra);
+  if(tempoAlvo>configuracao.tempoDeCompra){tempoAlvo=configuracao.tempoDeCompra}
+  console.log(tempoAlvo, configuracao.tempoDeCompra);
+  return tempoAlvo
 }
 
 async function estrategia() {
 
   capturarFiltro("estrategia")
   let itens = await visualizaDB();
-
   let itemTradeData =[]
   let i = 0
   while(i<itens.length){
@@ -26,32 +28,30 @@ async function estrategia() {
   const bookOferta = item.bookOferta
   const bookEncomenda = item.bookEncomenda
   const volumeMedioHora = item.volumeMedioHora
-
   const venderAlvo = (bookOferta.find(item => item[1] >= volumeMedioHora))[0];
-  const comprarAlvo = (bookEncomenda.find(item => item[1] >= (volumeMedioHora*configuracao.tempoDeCompra)))[0]
+  const tempoAlvo = tempoDeCompraSubtraido(bookEncomenda,volumeMedioHora)
+  const comprarAlvo = (bookEncomenda.find(item => item[1] >= (volumeMedioHora*tempoAlvo)))[0]
   const quantidadeAComprar = parseInt(configuracao.capital/comprarAlvo)
   const descontoTaxa = parseFloat((comprarAlvo*(configuracao.taxa+1)).toFixed(2))
   const lucro = parseFloat((((venderAlvo/comprarAlvo)-(configuracao.taxa+1))*100).toFixed(1))
   const volumeMoney = parseFloat(((comprarAlvo*(lucro/100))*volumeMedioHora).toFixed(2))
-  const tempoAlvo = parseInt(((bookEncomenda.find(item => item[1] >= (volumeMedioHora*configuracao.tempoDeCompra)))[1])/volumeMedioHora)
-  
- 
+
+// Últimos 3 dias
   let volumeTodoUD = 0
   const ultimosDias = item.cotacoes.slice(-72)
   ultimosDias.forEach(e => {
     volumeTodoUD +=e [1]
   });
-  let volumeMedioHoraUD = parseInt(volumeTodoUD/ultimosDias.length)
+  const volumeMedioHoraUD = parseInt(volumeTodoUD/ultimosDias.length)
   const venderAlvoUD = (bookOferta.find(item => item[1] >= volumeMedioHoraUD))[0];
-  const comprarAlvoUD = (bookEncomenda.find(item => item[1] >= (volumeMedioHoraUD*configuracao.tempoDeCompra)))[0]
-  const tempoAlvoUD = parseInt(((bookEncomenda.find(item => item[1] >= (volumeMedioHoraUD*configuracao.tempoDeCompra)))[1])/volumeMedioHoraUD)
+  const tempoAlvoUD = tempoDeCompraSubtraido(bookEncomenda, volumeMedioHoraUD)
+  const comprarAlvoUD = (bookEncomenda.find(item => item[1] >= (volumeMedioHoraUD*tempoAlvoUD)))[0]
   const quantidadeAComprarUD = parseInt(configuracao.capital/comprarAlvoUD)
   const descontoTaxaUD = parseFloat((comprarAlvoUD*(configuracao.taxa+1)).toFixed(2))
   const lucroUD = parseFloat((((venderAlvoUD/comprarAlvoUD)-(configuracao.taxa+1))*100).toFixed(1))
   const volumeMoneyUD = parseFloat(((comprarAlvoUD*(lucroUD/100))*volumeMedioHoraUD).toFixed(2))
-  ///
 
-  const objetos = {
+  const itemTratado = {
     'nome': decodeURIComponent(name),
     'link':link,
     'venda': venderAlvo,
@@ -62,7 +62,6 @@ async function estrategia() {
     'volume': volumeMedioHora,
     'dinheiro':volumeMoney,
     'tempoAlvo':tempoAlvo,
-
     'volumeUD': volumeMedioHoraUD,
     'tempoAlvoUD':tempoAlvoUD,
     'vendaUD': venderAlvoUD,
@@ -72,10 +71,10 @@ async function estrategia() {
     'lucroUD': lucroUD,
     'dinheiroUD':volumeMoneyUD,
     }
-    if(objetos.volume>=configuracao.volumeMedioHora && (lucro >=15 || lucroUD >= 15)){
-      itemTradeData.push(objetos)
+    if(itemTratado.volume>=configuracao.volumeMedioHora && lucro >=15){
+      itemTradeData.push(itemTratado)
     }
-    console.log(objetos)
+    console.log(itemTratado)
     i++
   }
   itemTradeData.sort((a, b) => b.lucro - a.lucro);
@@ -83,6 +82,3 @@ async function estrategia() {
 
   printItensFiltrados(itemTradeData)
 }
-
-
-
