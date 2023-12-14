@@ -36,12 +36,12 @@ async function estrategia() {
   const tempoAlvo = parseInt(((bookEncomenda.find(item => item[1] >= (volumeMedioHora*configuracao.tempoDeCompra)))[1])/volumeMedioHora)
   
  
-  let volumeTodo = 0
+  let volumeTodoUD = 0
   const ultimosDias = item.cotacoes.slice(-72)
   ultimosDias.forEach(e => {
-    volumeTodo +=e [1]
+    volumeTodoUD +=e [1]
   });
-  let volumeMedioHoraUD = parseInt(volumeTodo/ultimosDias.length)
+  let volumeMedioHoraUD = parseInt(volumeTodoUD/ultimosDias.length)
   const venderAlvoUD = (bookOferta.find(item => item[1] >= volumeMedioHoraUD))[0];
   const comprarAlvoUD = (bookEncomenda.find(item => item[1] >= (volumeMedioHoraUD*configuracao.tempoDeCompra)))[0]
   const tempoAlvoUD = parseInt(((bookEncomenda.find(item => item[1] >= (volumeMedioHoraUD*configuracao.tempoDeCompra)))[1])/volumeMedioHoraUD)
