@@ -4,19 +4,12 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 
-const mozilla = "https://developer.mozilla.org/";
 const steamcommunity = "https://steamcommunity.com/";
-const steampowered = "https://store.steampowered.com/";
-const twitter = "https://twitter.com/";
-const github = "https://github.com/";
 
 chrome.action.onClicked.addListener(async (tab) => {
   if (
-    tab.url.startsWith(steamcommunity) ||
-    tab.url.startsWith(twitter) ||
-    tab.url.startsWith(github) ||
-    tab.url.startsWith(steampowered) ||
-    tab.url.startsWith(mozilla)
+    tab.url.startsWith(steamcommunity)
+  
   ) {
     const prevState = await chrome.action.getBadgeText({ tabId: tab.id });
     const nextState = prevState === "ON" ? "OFF" : "ON";
