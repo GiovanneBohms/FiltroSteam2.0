@@ -34,7 +34,9 @@ async function estrategia() {
   const bookOferta = item.bookOferta
   const bookEncomenda = item.bookEncomenda
   const volumeMedioHora = item.volumeMedioHora
-  const venderAlvo = (bookOferta.find(item => item[1] >= volumeMedioHora))[0];
+  volumeMedioReal(item.cotacoes)
+  venderAlvoCalculo(bookOferta,volumeMedioHora)
+  const venderAlvo = venderAlvoCalculo(bookOferta,volumeMedioHora,bookEncomenda)
   const tempoAlvo = tempoDeCompraSubtraido(bookEncomenda,volumeMedioHora)
   const comprarAlvo = (bookEncomenda.find(item => item[1] >= (volumeMedioHora*tempoAlvo)))[0]
   const quantidadeAComprar = parseInt(configuracao.capital/comprarAlvo)
@@ -51,8 +53,9 @@ async function estrategia() {
 
   let volumeMedioHoraUD = parseInt(volumeTodoUD/ultimosDias.length)
 
-  const venderAlvoUD = (bookOferta.find(item => item[1] >= volumeMedioHoraUD))[0];
-  const tempoAlvoUD = tempoDeCompraSubtraido(bookEncomenda, volumeMedioHoraUD)
+  const venderAlvoUD = venderAlvoCalculo(bookOferta,volumeMedioHoraUD)
+  // const venderAlvoUD = (bookOferta.find(item => item[1] >= volumeMedioHoraUD))[0];
+  const tempoAlvoUD = tempoDeCompraSubtraido(bookEncomenda, volumeMedioHoraUD,bookEncomenda)
   const comprarAlvoUD = (bookEncomenda.find(item => item[1] >= (volumeMedioHoraUD*tempoAlvoUD)))[0]
   const quantidadeAComprarUD = parseInt(configuracao.capital/comprarAlvoUD)
   const descontoTaxaUD = parseFloat((comprarAlvoUD*(configuracao.taxa+1)).toFixed(2))
