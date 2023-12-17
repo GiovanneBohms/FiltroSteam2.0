@@ -35,6 +35,7 @@ chrome.action.onClicked.addListener(async (tab) => {
             "./src/UI/UIFiltrados.js",
             "./src/trade/trading.js",
             "./src/trade/volume.js",
+            "./src/trade/taxa.js",
             "./src/index.js"
           ]
         })
