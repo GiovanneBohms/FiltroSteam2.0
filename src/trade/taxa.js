@@ -21,13 +21,14 @@ function subtraiTaxa(entrada){
 
   const primeiroMaior = intervalos.find((valor) => valor >= entrada)
   const indicePrimeiroMaior = intervalos.indexOf(primeiroMaior)
-  const resultadoSubtracao = parseFloat((entrada - taxas[indicePrimeiroMaior-1]).toFixed(2))
+  const taxaSubtracao = parseFloat((entrada - taxas[indicePrimeiroMaior-1]).toFixed(2))
 
-    console.log(entrada,resultadoSubtracao)
+    console.log(entrada,taxaSubtracao)
+    return taxaSubtracao
   }
   
 
-  function somaTaxa(entrada){
+function somaTaxa(entrada){
     let intervalos =[0.19]
     let taxas = [0.02,0.03,0.04,0.06,0.07,0.09]
 
@@ -42,10 +43,11 @@ function subtraiTaxa(entrada){
         taxas.push(parseFloat((ultimoElemento+0.02).toFixed(2)))
       }
     }
-    const taxaSoma = entrada+taxas[taxas.length-1]
+    const indiceUltimoElemento = intervalos.indexOf(intervalos[intervalos.length -1])
+    const taxaSoma = parseFloat((entrada+taxas[indiceUltimoElemento]).toFixed(2))
     console.log(entrada,taxaSoma)
-    
+    return taxaSoma
   }
-  const number = 5
+  const number = 0.31
   somaTaxa(number)
   subtraiTaxa(number)
