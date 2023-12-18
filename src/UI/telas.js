@@ -52,8 +52,12 @@ async function renderizador() {
   <p style="text-align: center; font-size: 12px; margin-top:40px;">By: Giovanne Bohms</p>
   
 `
-botaoColetarDados.addEventListener('click', function(){capturarFiltro("coletarDados")} )
-botaoDadosColetados.addEventListener("click", estrategia);
+botaoColetarDados.addEventListener('click', function(){
+  capturarFiltro("coletarDados")
+})
+botaoDadosColetados.addEventListener("click",function(){
+  estrategia("botaoDadosColetados")
+});
 }
 
 function telaAtualizações(string) {

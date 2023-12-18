@@ -21,9 +21,11 @@ function tempoDeCompraSubtraido(bookEncomenda, volumeMedioHora) {
   return tempoAlvo
 }
 
-async function estrategia() {
-
-  capturarFiltro("estrategia")
+async function estrategia(origem) {
+if(origem ==="botaoDadosColetados"){
+   capturarFiltro(origem)
+}
+ 
   let itens = await visualizaDB();
   let itemTradeData =[]
   let i = 0
