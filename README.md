@@ -64,4 +64,12 @@ Nos resultados haverá as seguintes informações principais:
 5. `Vol:` Volume dos itens por hora
 6. `Lucro:` Lucro presumido, nunca coloque ordens de compra a itens que não possuem lucro presumido acima de 35%
 
+ ## Resultados com 1 ano de uso
+
+![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/2d36860f-5dea-4993-871d-019d66f8be6c)
+
+## Transações Realizadas até o último update deste Readme
+![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/5d13941a-7eff-44da-ab99-1601806c7e62)
+
+
 
