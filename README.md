@@ -1,7 +1,67 @@
-<p align="center">
-  <img src="https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/e5e0cdda-a18b-4632-a5ec-83e5047bd562" width="300">
-</p>
+# Extensão para Chromium: Filtro de Assimetria Bullish no Marketplace da Steam
 
-Você acha que leu Filtro Steam 2.0, mas na verdade leu um anúncio aleatório " Filtro de carvão ativado para água potável".
+## Descrição
 
-Circulando cidadão!
+Esta extensão para navegadores baseados em Chromium coleta dados do Marketplace da Steam e filtra os itens com assimetria bullish, apresentando uma lista ordenada dos itens mais lucrativos para os menos lucrativos. O objetivo é auxiliar os usuários na identificação de oportunidades de compra e revenda no Marketplace da Steam.
+
+## Funcionalidades
+
+- Coleta de dados do Marketplace da Steam.
+- Filtro de itens com base em critérios de lucratividade.
+- Exibição de uma lista ordenada dos itens filtrados.
+- Interface amigável para configuração de parâmetros de pesquisa.
+
+## Instalação
+
+1. Clone este repositório.
+    ```bash
+    git clone https://github.com/GiovanneBohms/FiltroSteam2.0.git
+    ```
+
+2. Abra o Chrome e vá para `chrome://extensions/`.
+
+3. Ative o "Modo de desenvolvedor" no canto superior direito.
+
+4. Clique em "Carregar sem compactação" e selecione a pasta do repositório clonado.
+5. Click no icone da extensão para ativar e desativá-la: ![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/15e0e9e4-87da-40bf-85fa-7c52aef658f0)
+
+## Uso
+
+### Interface de Configuração
+
+A interface de configuração permite definir os parâmetros de pesquisa para a coleta de dados.
+![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/64e6346e-5278-4d70-9899-8847ffa6f392)
+
+### Configuração de Parâmetros
+1. `Capital de Trade`: Essa informação é apenas para que a extensão saiba a quantidade de itens a sugerir para compra.
+2. `Quantidade de itens para pesquisar`: Quantidade total de itens a serem filtrados.
+3. `Opertas Mínimas`: Quantidade de itens mínimos que aparece ao lado do valor dos itens, é o primeiro filtro de pesquisa de acordo com a estratégia de trading do usuário.
+4. `Intervalo Em Horas`: Define quais as ultimas horas do gráfico a serem pesquisados, recomendado definir a 336 horas que são as duas últimas semanas.
+5. `Tempo de Compra`: Para o gerenciamento de risco, quanto maior o tempo, menos provável comprar o item a um valor não lucrativo, entretando a compra será menos provável. Recomendo definir entre 48 e 72 horas
+6. `Volume Médio de Negociação por Hora`: define qual o volume médio por hora mínimo dos itens, é o segundo filtro de pesquisa e funciona de acordo com a estratégia de trading do usuário.
+7. `Preço Mínimo e Preço Máximo`: Define o intervalo de preço que o usuário tem interesse, é o terceiro filtro e depente da estratégia de trading utilizado.
+
+8. Após configurar os parâmetros click no botão `Coletar Dados`
+
+### Interface de Resultados
+Após concluir a pesquisa a seguinte interface irá surgir:
+![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/fa40dc54-4a00-4e5b-9e21-90dd54cfe5ea)
+1. Após a raspagem de dados, as informações ficarão salvas no navegador, para visualizá-las novamente basta clickar no botão
+
+   `Utilizar Dados Já Coletados`
+4. Quanto maior o parâmetro `Tempo de Compra`, maior será o lucro presumido no futuro.
+
+### O que fazer com as informações:
+Nos resultados haverá as seguintes informações principais:
+
+![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/3f6e284b-3e98-4252-a33e-019e8e0d4a51)
+
+
+1. `Sell:` Valor a vender
+2. `0a0:` Valor de saída para caso o item deixe de ser lucrativo devido a agressões no book por drop de itens
+3. `Buy:` Valor de compra
+4. `Qnt:` Quantidade de itens que você pode comprar, isso é calculado a partir do parâmetro `Capital de Trade`
+5. `Vol:` Volume dos itens por hora
+6. `Lucro:` Lucro presumido, nunca coloque ordens de compra a itens que não possuem lucro presumido acima de 35%
+
+
