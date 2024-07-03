@@ -37,7 +37,7 @@ A interface de configuração permite definir os parâmetros de pesquisa para a 
 2. `Quantidade de itens para pesquisar`: Quantidade total de itens a serem filtrados.
 3. `Opertas Mínimas`: Quantidade de itens mínimos que aparece ao lado do valor dos itens, é o primeiro filtro de pesquisa de acordo com a estratégia de trading do usuário.
 4. `Intervalo Em Horas`: Define quais as ultimas horas do gráfico a serem pesquisados, recomendado definir a 336 horas que são as duas últimas semanas.
-5. `Tempo de Compra`: Para o gerenciamento de risco, quanto maior o tempo, menos provável comprar o item a um valor não lucrativo, entretando a compra será menos provável. Recomendo definir entre 48 e 72 horas
+5. `Tempo de Compra`: Para o gerenciamento de risco: quanto maior o tempo, mais lucrativo será o item, mas menos provável que a compra ocorra. Recomendo definir entre 48 e 72 horas
 6. `Volume Médio de Negociação por Hora`: define qual o volume médio por hora mínimo dos itens, é o segundo filtro de pesquisa e funciona de acordo com a estratégia de trading do usuário.
 7. `Preço Mínimo e Preço Máximo`: Define o intervalo de preço que o usuário tem interesse, é o terceiro filtro e depente da estratégia de trading utilizado.
 
