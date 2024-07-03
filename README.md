@@ -71,5 +71,7 @@ Nos resultados haverá as seguintes informações principais:
 ## Transações Realizadas até o último update deste Readme
 ![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/5d13941a-7eff-44da-ab99-1601806c7e62)
 
+## Compra e Revenda de Itens
+![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/cd7d6a0b-a3fe-4ed2-a0ac-d4fadafa830d)
 
 
