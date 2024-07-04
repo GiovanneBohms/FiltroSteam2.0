@@ -23,7 +23,8 @@ Esta extensão para navegadores baseados em Chromium coleta dados do Marketplace
 3. Ative o "Modo de desenvolvedor" no canto superior direito.
 
 4. Clique em "Carregar sem compactação" e selecione a pasta do repositório clonado.
-5. Click no icone da extensão para ativar e desativá-la: ![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/15e0e9e4-87da-40bf-85fa-7c52aef658f0)
+5. Click no icone da extensão para ativar e desativá-la: ![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/e21ca124-40e6-42cb-a90f-e7cb029d49c1)
+
 
 ## Uso
 
