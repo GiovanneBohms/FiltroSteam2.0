@@ -1,4 +1,4 @@
-# Extensão para Chromium: Filtro de Assimetria Bullish no Marketplace da Steam
+# Extensão para Chromium: FiltroSteam2.0
 
 ## Descrição
 
