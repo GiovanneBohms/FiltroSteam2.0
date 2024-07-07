@@ -22,6 +22,12 @@ async function renderizador() {
       <label for="valorMinimo">Ofertas Mínimas:</label>
       <input type="number" id="valorMinimo" name="valorMinimo" value="1000">
   </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+      <label for="valorMaximo">Ofertas Máximas:</label>
+      <input type="number" id="valorMaximo" name="valorMaximo" value="1000">
+  </div>
+
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="intervaloDeHoras">Intervalo Em Horas:</label>
       <input type="number" id="intervaloDeHoras" name="intervaloDeHoras" value="168">
@@ -69,6 +75,7 @@ function telaAtualizações(string) {
   Capital de Trade: R$:${configuracao.capital}<br>
   Total a Pesquisar:  ${configuracao.quantidadeParaPesquisar}<br>
   Ofertas Minimas:  ${configuracao.ofertasMinimas}<br>
+  Ofertas Minimas:  ${configuracao.ofertasMaximas}<br>
   Intervalo em Horas:  ${configuracao.horas}<br>
   Tempo de Compra: ${(configuracao.tempoDeCompra)}<br>
   Volume Médio por Hora:  ${configuracao.volumeMedioHora}<br>
@@ -89,6 +96,7 @@ function capturarFiltro(origem) {
 
   let quantidadeItens = parseInt(quantItens.value);
   let ofertasMinimas = parseInt(valorMinimo.value);
+  let ofertasMaximas = parseInt(valorMaximo.value);
   let intervaloHora = parseInt(intervaloDeHoras.value);
   let volumeMedio = parseInt(volumeMedioPorHora.value);
   let cotacaoMinima = parseFloat(precoMinimo.value);
@@ -98,6 +106,7 @@ function capturarFiltro(origem) {
   config(
     quantidadeItens,
     ofertasMinimas,
+    ofertasMaximas,
     intervaloHora,
     volumeMedio,
     cotacaoMinima,

@@ -11,6 +11,7 @@ async function coletaItensComConfig(intervalo) {
   for (let i = 0; i < arrayObjetosItens.length; i++) {
     if (
       arrayObjetosItens[i].ofertasQuant >= configuracao.ofertasMinimas &&
+      arrayObjetosItens[i].ofertasQuant <= configuracao.ofertasMaximas &&
       arrayObjetosItens[i].precoDeVenda >= configuracao.precoMinimo &&
       arrayObjetosItens[i].precoDeVenda <= configuracao.precoMaximo 
       && configuracao.idsPermitidos.includes(arrayObjetosItens[i].id)

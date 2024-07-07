@@ -4,6 +4,7 @@ let configuracao = {
   // Config para coleta de API
   quantidadeParaPesquisar: 200,
   ofertasMinimas: 5000,
+  ofertasMaximas:7000,
   cotacaoDolar: 1,
   horas: 168,
   volumeMedioHora: 200,
@@ -16,10 +17,11 @@ let configuracao = {
   capital: 1000
 };
 
-function config(quantPesquisa,ofMinimas,horasTotais,volumeMedioPorHora,valorMinimo,valorMaximo,tempoDeCompra,capital){
+function config(quantPesquisa,ofMinimas,ofMaximas,horasTotais,volumeMedioPorHora,valorMinimo,valorMaximo,tempoDeCompra,capital){
 
     configuracao.quantidadeParaPesquisar = quantPesquisa,
     configuracao.ofertasMinimas = ofMinimas,
+    configuracao.ofertasMaximas = ofMaximas
     configuracao.cotacaoDolar = 1
     configuracao.horas = horasTotais
     configuracao.volumeMedioHora = volumeMedioPorHora
