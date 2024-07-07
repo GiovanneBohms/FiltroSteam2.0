@@ -3,6 +3,15 @@ console.log("./src/UI/telas,js");
 async function renderizador() {
   const telaInput = document.getElementById("popularItemsRows");
   const maisItens = document.getElementById("popularItemsMore");
+  const capitaDeTrade = 100;
+  const quantidadeDeItensParaPequisar=100;
+  const ofertasMinimas =110000;
+  const ofertasMaximas = 125000;
+  const intervaloEmHoras = 168;
+  const tempoDeCompra = 24;
+  const volumeMedioPorHora = 100;
+  const precoMinimo = 4;
+  const precoMaximo = 7;
   maisItens.innerHTML = "";
   telaInput.innerHTML = `
   <div id="printConfiguracao" style="max-width: 620px;"> </div> 
@@ -12,41 +21,41 @@ async function renderizador() {
   
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="capital">Capital de Trade:</label>
-      <input type="number" id="capitalCaixa" name="capital" value="1000">
+      <input type="number" id="capitalCaixa" name="capital" value="${capitaDeTrade}">
   </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="quantItens">Quantidade de Itens para pesquisar:</label>
-      <input type="number" id="quantItens" name="quantItens" value="1000">
+      <input type="number" id="quantItens" name="quantItens" value="${quantidadeDeItensParaPequisar}">
   </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="valorMinimo">Ofertas Mínimas:</label>
-      <input type="number" id="valorMinimo" name="valorMinimo" value="1000">
+      <input type="number" id="valorMinimo" name="valorMinimo" value="${ofertasMinimas}">
   </div>
 
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="valorMaximo">Ofertas Máximas:</label>
-      <input type="number" id="valorMaximo" name="valorMaximo" value="1000">
+      <input type="number" id="valorMaximo" name="valorMaximo" value="${ofertasMaximas}">
   </div>
 
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="intervaloDeHoras">Intervalo Em Horas:</label>
-      <input type="number" id="intervaloDeHoras" name="intervaloDeHoras" value="168">
+      <input type="number" id="intervaloDeHoras" name="intervaloDeHoras" value="${intervaloEmHoras}">
   </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
   <label for="tempoDeCompra">Tempo de Compra:</label>
-  <input type="number" id="tempoDeCompra" name="tempoDeCompra" value="24">
+  <input type="number" id="tempoDeCompra" name="tempoDeCompra" value="${tempoDeCompra}">
 </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="volumeMedioPorHora">Volume Medio De Negociação Por Hora:</label>
-      <input type="number" id="volumeMedioPorHora" name="volumeMedioPorHora" value="300">
+      <input type="number" id="volumeMedioPorHora" name="volumeMedioPorHora" value="${volumeMedioPorHora}">
   </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="precoMinimo">Preço Mínimo:</label>
-      <input type="number" id="precoMinimo" name="precoMinimo" value="0.15">
+      <input type="number" id="precoMinimo" name="precoMinimo" value="${precoMinimo}">
   </div>
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
       <label for="precoMaximo">Preço Máximo:</label>
-      <input type="number" id="precoMaximo" name="precoMaximo" value="10">
+      <input type="number" id="precoMaximo" name="precoMaximo" value="${precoMaximo}">
   </div>
   <button type="button" id="botaoColetarDados" style="height: 50px; background-color: #1b2838; color: #ebebeb; cursor: pointer; font-weight: bold; margin-top: 10px;">Coletar Dados</button>
 
