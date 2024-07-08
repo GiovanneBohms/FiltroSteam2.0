@@ -23,7 +23,8 @@ Esta extensão para navegadores baseados em Chromium coleta dados do Marketplace
 3. Ative o "Modo de desenvolvedor" no canto superior direito.
 
 4. Clique em "Carregar sem compactação" e selecione a pasta do repositório clonado.
-5. Click no ícone da extensão para ativar e desativá-la: ![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/e21ca124-40e6-42cb-a90f-e7cb029d49c1)
+5. Click no ícone da extensão para ativar e desativá-la:
+ ![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/e21ca124-40e6-42cb-a90f-e7cb029d49c1)
 
 ## Uso
 
@@ -50,6 +51,7 @@ Após concluir a pesquisa, a seguinte interface irá surgir:
 
 ### O que fazer com as informações:
 Nos resultados haverá as seguintes informações principais:
+
 ![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/3f6e284b-3e98-4252-a33e-019e8e0d4a51)
 
 1. `Sell`: Valor a vender.
@@ -61,15 +63,18 @@ Nos resultados haverá as seguintes informações principais:
 
 ## Resultados com 1 ano de uso
 
-![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/2d36860f-5dea-4993-871d-019d66f8be6c)
+![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/0d368c65-2aa9-4fd2-bef9-33058918c5b5)
+
 
 ## Transações Realizadas até o último update deste README
 
-![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/04b35a57-0601-44fe-ac95-3cf23e8bc0f0)
+![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/7469dca6-8494-49a3-874b-19fd6bd35d27)
+
 
 ## Compra e Revenda de Itens
-![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/cd7d6a0b-a3fe-4ed2-a0ac-d4fadafa830d)
-![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/98ac2329-316f-4691-a000-da71ebebaf85)
+
+![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/4f6f5181-0490-461e-bfc4-a328b7c2b283)
+
 
 ## Próximas Atualizações
 
