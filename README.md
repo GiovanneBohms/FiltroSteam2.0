@@ -75,7 +75,8 @@ Nos resultados haverá as seguintes informações principais:
 
 ### Planejado
 
-- **Parâmetro "Ofertas Máximas"**: Adicionar um filtro para definir o número máximo de ofertas exibidas para cada item.
+- **Parâmetro "Ofertas Máximas"**: Adicionar um filtro para definir o número máximo de ofertas exibidas para cada item. ✔
+- Salvar parâmetros do último registro
 
 ### Em Consideração
 
