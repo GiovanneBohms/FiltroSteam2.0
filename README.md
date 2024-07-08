@@ -30,12 +30,12 @@ Esta extensão para navegadores baseados em Chromium coleta dados do Marketplace
 ### Interface de Configuração
 
 A interface de configuração permite definir os parâmetros de pesquisa para a coleta de dados.
-![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/64e6346e-5278-4d70-9899-8847ffa6f392)
+![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/db173a82-0f6b-4238-8bd0-24400f55b84d)
 
 ### Configuração de Parâmetros
 1. `Capital de Trade`: Essa informação é apenas para que a extensão saiba a quantidade de itens a sugerir para compra.
 2. `Quantidade de itens para pesquisar`: Quantidade total de itens a serem filtrados.
-3. `Ofertas Mínimas`: Quantidade de itens mínimos que aparece ao lado do valor dos itens, é o primeiro filtro de pesquisa de acordo com a estratégia de trading do usuário.
+3. `Ofertas Mínimas e Máximas`: Quantidade de itens mínimo e máximo que aparece ao lado do valor dos itens, é o primeiro filtro de pesquisa de acordo com a estratégia de trading do usuário.
 4. `Intervalo Em Horas`: Define quais as últimas horas do gráfico a serem pesquisadas, recomendado definir a 336 horas que são as duas últimas semanas.
 5. `Tempo de Compra`: Para o gerenciamento de risco: quanto maior o tempo, mais lucrativo será o item, mas menos provável que a compra ocorra. Recomendo definir entre 48 e 72 horas.
 6. `Volume Médio de Negociação por Hora`: Define qual o volume médio por hora mínimo dos itens, é o segundo filtro de pesquisa e funciona de acordo com a estratégia de trading do usuário.
