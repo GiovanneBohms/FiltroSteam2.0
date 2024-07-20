@@ -87,6 +87,5 @@ Nos resultados haverá as seguintes informações principais:
 ### Em Consideração
 
 - Melhorias na interface de usuário para facilitar a configuração dos parâmetros.
-- Implementação de notificações para alertar sobre novas oportunidades de compra e venda.
 
 Mantenha-se atualizado sobre as próximas versões e melhorias seguindo este repositório e conferindo as notas de lançamento.
