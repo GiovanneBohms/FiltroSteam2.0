@@ -3,14 +3,16 @@ console.log("./src/UI/telas,js");
 async function renderizador() {
   const telaInput = document.getElementById("popularItemsRows");
   const maisItens = document.getElementById("popularItemsMore");
-  const capitaDeTrade = 100;
+  const WalletBallance = parseFloat((document.getElementById("marketWalletBalanceAmount").textContent).replace("R$ ", "").replace(",", "."));
+  console.log(WalletBallance);
+  const capitaDeTrade = WalletBallance;
   const quantidadeDeItensParaPequisar=100;
-  const ofertasMinimas =110000;
+  const ofertasMinimas =5000;
   const ofertasMaximas = 125000;
   const intervaloEmHoras = 168;
   const tempoDeCompra = 24;
   const volumeMedioPorHora = 100;
-  const precoMinimo = 4;
+  const precoMinimo = 5;
   const precoMaximo = 7;
   maisItens.innerHTML = "";
   telaInput.innerHTML = `
