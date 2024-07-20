@@ -83,15 +83,15 @@ function telaAtualizações(string) {
 
   let printConfiguracao = `
   <span style="font-weight: bold;">Configuração definida:<span><br><br>
-  Capital de Trade: R$:${configuracao.capital}<br>
-  Total a Pesquisar:  ${configuracao.quantidadeParaPesquisar}<br>
-  Ofertas Minimas:  ${configuracao.ofertasMinimas}<br>
-  Ofertas Minimas:  ${configuracao.ofertasMaximas}<br>
-  Intervalo em Horas:  ${configuracao.horas}<br>
-  Tempo de Compra: ${(configuracao.tempoDeCompra)}<br>
-  Volume Médio por Hora:  ${configuracao.volumeMedioHora}<br>
-  Preço Mínimo:  ${configuracao.precoMinimo}<br>
-  Preço Máximo:  ${configuracao.precoMaximo}<br><br>
+  Capital de Trade: R$: ${configuracao.capital}<br>
+  Total a Pesquisar:  ${configuracao.quantidadeParaPesquisar} Itens<br>
+  Ofertas Minimas:  ${configuracao.ofertasMinimas} Unidades<br>
+  Ofertas Minimas:  ${configuracao.ofertasMaximas} Unidades<br>
+  Intervalo em Horas:  ${configuracao.horas} Horas<br>
+  Tempo de Compra: ${(configuracao.tempoDeCompra)} Horas<br>
+  Volume Médio por Hora:  ${configuracao.volumeMedioHora} Unidades<br>
+  Preço Mínimo: R$: ${configuracao.precoMinimo}<br>
+  Preço Máximo: R$: ${configuracao.precoMaximo}<br><br>
   <span style="font-weight: 700;">Aguarde a coleta de dados:</span><br>`;
 
   let print = `
