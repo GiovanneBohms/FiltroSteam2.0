@@ -77,11 +77,11 @@ Nos resultados haverá as seguintes informações principais:
 ![image](https://github.com/GiovanneBohms/FiltroSteam2.0/assets/13811860/4f6f5181-0490-461e-bfc4-a328b7c2b283)
 
 
-## Próximas Atualizações
-
-### Planejado
-
+## Últimas Atualizações
 - **Parâmetro "Ofertas Máximas"**: Adicionar um filtro para definir o número máximo de ofertas exibidas para cada item. ✔
+- Correção das unidades de medida na interface de pesquisa. ✔
+- Cópia do saldo da carteira para capital de Trade ✔
+## Próximas Atualizações
 - Salvar parâmetros do último registro
 
 ### Em Consideração
