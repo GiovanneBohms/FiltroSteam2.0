@@ -13,6 +13,7 @@ let configuracao = {
   tempoDeCompra: 24,
   taxa:0.15,
   // CSGO:730 DOTA: 570 TF2: 440
+  // Coins 3070500
   idsPermitidos: [730,570,440],
   capital: 1000
 };
