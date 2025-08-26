@@ -1,4 +1,4 @@
-PS: Esse foi o meu primeiro projeto, então não há boas práticas de programação 💔
+obs: Esse foi o meu primeiro projeto, então não há boas práticas de programação 💔
 # Extensão para Chromium: FiltroSteam2.0
 
 ## Descrição
